@@ -1,8 +1,4 @@
-package com.fooock.jansib.runnerexample;
-
-import com.fooock.jansib.runner.AnsibleRunner;
-import com.fooock.jansib.runner.RunnerConfiguration;
-import com.fooock.jansib.runner.RunnerEventListener;
+package com.fooock.jansib.runner;
 
 import java.util.List;
 
@@ -10,16 +6,15 @@ import java.util.List;
  *
  */
 public class Application implements RunnerEventListener {
-
-    public void run(RunnerConfiguration configuration) {
-        AnsibleRunner runner = new AnsibleRunner(configuration);
-        runner.start(this);
-    }
-
     public static void main(String[] args) {
         RunnerConfiguration configuration = new RunnerConfiguration("jansib-ansible-test", "playbook.yml", "localhost,");
         Application application = new Application();
         application.run(configuration);
+    }
+
+    public void run(RunnerConfiguration configuration) {
+        AnsibleRunner runner = new AnsibleRunner(configuration);
+        runner.start(this);
     }
 
     @Override

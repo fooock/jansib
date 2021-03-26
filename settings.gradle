@@ -1,4 +1,3 @@
 rootProject.name = 'jansib'
 
 include(':jansib-runner')
-include(':jansib-runner-example')
