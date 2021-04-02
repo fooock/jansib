@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProjectModule } from './project/project.module';
 import { KeystoreModule } from './keystore/keystore.module';
+import { InventoryModule } from './inventory/inventory.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { KeystoreModule } from './keystore/keystore.module';
     HttpClientModule,
     AppRoutingModule,
     ProjectModule,
-    KeystoreModule
+    KeystoreModule,
+    InventoryModule
   ],
   providers: [],
   bootstrap: [

@@ -14,6 +14,10 @@ const routes: Routes = [
   {
     path: 'keystores',
     loadChildren: './keystore/keystore.module#KeystoreModule'
+  },
+  {
+    path: 'inventories',
+    loadChildren: './inventory/inventory.module#InventoryModule'
   }
 ];
 
