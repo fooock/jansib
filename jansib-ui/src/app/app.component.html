@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid mx-4 my-1">
-    <a class="navbar-brand" href="#">Jansib dashboard</a>
+    <a class="navbar-brand" [routerLink]="['/']" >Jansib</a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -8,27 +8,24 @@
 
     <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
       <ul class="navbar-nav mx-4">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Default project
-          </a>
-          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-          </ul>
-        </li>
         <li class="nav-item ms-2">
-          <a class="nav-link" href="">
-            Keystore
+          <a class="nav-link" [routerLink]="['/projects']" routerLinkActive="active" >
+            Projects
           </a>
         </li>
         <li class="nav-item ms-2">
           <a class="nav-link" href="">
-            Inventory
+            Keystores
           </a>
         </li>
         <li class="nav-item ms-2">
           <a class="nav-link" href="">
-            Repository
+            Inventories
+          </a>
+        </li>
+        <li class="nav-item ms-2">
+          <a class="nav-link" href="">
+            Repositories
           </a>
         </li>
       </ul>

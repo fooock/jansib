@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Project } from '../project';
-import { ProjectService } from '../project.service';
+import { Project } from '../project/project';
+import { ProjectService } from '../project/project.service';
 
 @Component({
-  selector: 'app-index',
-  templateUrl: './index.component.html',
-  styleUrls: ['./index.component.css']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css']
 })
-export class IndexComponent implements OnInit {
+export class DashboardComponent implements OnInit {
   projects: Project[] = [];
 
   constructor(
