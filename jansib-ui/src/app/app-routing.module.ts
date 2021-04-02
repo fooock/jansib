@@ -18,6 +18,10 @@ const routes: Routes = [
   {
     path: 'inventories',
     loadChildren: './inventory/inventory.module#InventoryModule'
+  },
+  {
+    path: 'repositories',
+    loadChildren: './repository/repository.module#RepositoryModule'
   }
 ];
 

@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { ProjectModule } from './project/project.module';
 import { KeystoreModule } from './keystore/keystore.module';
 import { InventoryModule } from './inventory/inventory.module';
+import { RepositoryModule } from './repository/repository.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { InventoryModule } from './inventory/inventory.module';
     AppRoutingModule,
     ProjectModule,
     KeystoreModule,
-    InventoryModule
+    InventoryModule,
+    RepositoryModule
   ],
   providers: [],
   bootstrap: [
