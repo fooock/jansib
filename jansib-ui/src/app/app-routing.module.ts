@@ -10,6 +10,10 @@ const routes: Routes = [
   {
     path: 'projects',
     loadChildren: './project/project.module#ProjectModule'
+  },
+  {
+    path: 'keystores',
+    loadChildren: './keystore/keystore.module#KeystoreModule'
   }
 ];
 

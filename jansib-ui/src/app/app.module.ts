@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProjectModule } from './project/project.module';
+import { KeystoreModule } from './keystore/keystore.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ProjectModule } from './project/project.module';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    ProjectModule
+    ProjectModule,
+    KeystoreModule
   ],
   providers: [],
   bootstrap: [
