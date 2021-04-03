@@ -1,0 +1,93 @@
+<div class="container">
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item" aria-current="page">
+        <a routerLink="/keystores">keystores</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">
+        create
+      </li>
+      <li *ngIf="model.name.length > 0" class="breadcrumb-item active" aria-current="page">
+        {{ model.name }}
+      </li>
+    </ol>
+  </nav>
+
+  <div class="bg-data border-data p-4 mt-4">
+    <h4>Create keystore</h4>
+
+    <form>
+      <div class="row">
+        <div class="col-7 mb-3">
+          <label for="frmName" class="form-label">Name</label>
+          <input type="text" class="form-control" name="frmName" id="frmName" placeholder="Keystore name"
+            [(ngModel)]="model.name" required>
+          <small class="form-text text-muted">Required. Only alphanumeric and spaces are allowed.</small>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-7 mb-3">
+          <label for="frmDescription" class="form-label">Description</label>
+          <input type="text" class="form-control" name="frmDescription" id="frmDescription"
+            placeholder="Keystore description" [(ngModel)]="model.description">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-2 mb-5">
+          <label for="frmType" class="form-label">Type</label>
+          <select name="type" class="form-select" aria-label="Select keystore type" [(ngModel)]="model.type"
+            (ngModelChange)="onChange($event)">
+            <option *ngFor=" let type of types" [ngValue]="type">
+              {{ type }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div *ngIf="model.type == 'SSH'">
+        <div class="row">
+          <div class="col-7 mb-3">
+            <label for="frmSshUsername" class="form-label">Username</label>
+            <input type="text" class="form-control" name="frmSshUsername" id="frmSshUsername" placeholder="root"
+              [(ngModel)]="model.ssh!.username">
+            <small class="form-text text-muted">The username to be used for SSH authentication. If not
+              specified we will use <strong>root</strong> by default.</small>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-7 mb-3">
+            <label for="frmSshPassword" class="form-label">Password</label>
+            <input type="password" class="form-control" name="frmSshPassword" id="frmSshPassword" placeholder="password"
+              [(ngModel)]="model.ssh!.password">
+            <small class="form-text text-muted">The password to be used for SSH authentication.</small>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-7 mb-3">
+            <label for="frmSshPrivateKey" class="form-label">Private Key</label>
+            <textarea type="password" class=" form-control" rows="6" name="frmSshPrivateKey" id="frmSshPrivateKey"
+              placeholder="Paste here the content of your private key" [(ngModel)]="model.ssh!.privateKey"></textarea>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-7 mb-3">
+            <label for="frmSshPassphrase" class="form-label">Private Key Passphrase</label>
+            <input type="password" class="form-control" name="frmSshPassphrase" id="frmSshPassphrase"
+              placeholder="passphrase" [(ngModel)]="model.ssh!.passphrase">
+            <small class="form-text text-muted">The password used to protect your passphrase, if any.</small>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-primary mt-3">
+        Create
+      </button>
+    </form>
+  </div>
+</div>
