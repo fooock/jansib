@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Keystore } from './keystore';
+import { Keystore, SshConfig } from './keystore';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +18,8 @@ export class KeystoreService {
   }
 
   getKeystores(): Observable<Keystore[]> {
+    //const k = new Keystore('12', 'github token', 'dfgsdfgsdfg', 'SSH', new SshConfig('', '', '', ''));
+    //this.keystores.push(k);
     return of(this.keystores);
   }
 }

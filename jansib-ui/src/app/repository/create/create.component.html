@@ -1,0 +1,88 @@
+<div class="container">
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item" aria-current="page">
+        <a routerLink="/repositories">repositories</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">
+        create
+      </li>
+      <li *ngIf="model.name.length > 0" class="breadcrumb-item active" aria-current="page">
+        {{ model.name }}
+      </li>
+    </ol>
+  </nav>
+
+  <div class="bg-data border-data p-4 mt-4">
+    <h4>Create repository</h4>
+
+    <form autocomplete="off">
+      <div class="row">
+        <div class="col-7 mb-3">
+          <label for="frmName" class="form-label"><strong>Name</strong></label>
+          <input type="text" class="form-control" name="frmName" id="frmName" placeholder="Repository name"
+            [(ngModel)]="model.name" required>
+          <small class="form-text text-muted">Required. Only alphanumeric and spaces are allowed.</small>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-7 mb-3">
+          <label for="frmUrl" class="form-label"><strong>URL</strong></label>
+          <input type="text" class="form-control" name="frmUrl" id="frmUrl" placeholder="Repository URL"
+            [(ngModel)]="model.url" required>
+          <small class="form-text text-muted">Required. The repository will be cloned using this URL.</small>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-5 mb-3">
+          <label for="frmBranch" class="form-label"><strong>Branch</strong></label>
+          <input type="text" class="form-control" name="frmBranch" id="frmBranch" placeholder="Repository branch"
+            [(ngModel)]="model.branch" required>
+          <small class="form-text text-muted">Required. Repository branch to use. By default is
+            <strong>master</strong>.</small>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-2 mb-3">
+          <label for="frmBranch" class="form-label"><strong>Use auth?</strong></label>
+          <select name="useAuth" id="useAuth" class="form-select" aria-label="Is auth required" [(ngModel)]="useAuth">
+            <option *ngFor=" let v of authValues" [ngValue]="v.value">
+              {{ v.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div *ngIf="useAuth" class="row">
+        <div class="col-5 mb-3">
+          <label for="frmType" class="form-label"><strong>Keystore</strong></label>
+
+          <div *ngIf="keystores.length > 0">
+            <select name="name" class="form-select" aria-label="Select keystore" [(ngModel)]="model.keyId"
+              (ngModelChange)="onChange($event)">
+              <option *ngFor=" let ks of keystores" [ngValue]="ks.id">
+                {{ ks.name }}
+              </option>
+            </select>
+            <small class="form-text text-muted">This key will be used to clone your private repository.</small>
+          </div>
+
+          <div *ngIf="keystores.length == 0" class="alert alert-warning mt-2" role="alert">
+            No keystores available. Try to <a class="alert-link" routerLink="/keystores/create">
+              create one</a> in order to continue.
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary mt-3"
+        [disabled]="!model.name || !model.url || !model.branch || (useAuth && !model.keyId)">
+        Create
+      </button>
+    </form>
+  </div>
+
+</div>
