@@ -7,7 +7,7 @@ import java.util.List;
  */
 public class Application implements RunnerEventListener {
     public static void main(String[] args) {
-        RunnerConfiguration configuration = new RunnerConfiguration("jansib-ansible-test", "playbook.yml", "localhost,");
+        RunnerConfiguration configuration = new RunnerConfiguration("jansib-runner/src/test/resources", "playbook.yml", "localhost,");
         Application application = new Application();
         application.run(configuration);
     }
