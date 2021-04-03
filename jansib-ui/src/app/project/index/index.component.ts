@@ -9,14 +9,19 @@ import { ProjectService } from '../project.service';
 })
 export class IndexComponent implements OnInit {
   projects: Project[] = [];
+  loading: boolean = false;
 
   constructor(
     private projectService: ProjectService
   ) { }
 
   ngOnInit(): void {
-    this.projectService.getProjects()
-    .subscribe(args => this.projects = args, 
-      err => console.log(err));
+    this.loading = true;
+
+    this.projectService.getProjects().subscribe(_ => {
+      this.loading = false;
+    }, err => {
+      this.loading = false;
+    });
   }
 }

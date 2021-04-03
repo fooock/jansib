@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FileConfig, Inventory } from '../inventory';
 import { InventoryService } from '../inventory.service';
 
@@ -12,14 +13,28 @@ export class CreateComponent implements OnInit {
   sources = [
     { name: 'File', id: 'file' }
   ];
+  loading: boolean = false;
 
   constructor(
-    private service: InventoryService
+    private service: InventoryService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     // assign a default value...
     this.model.source = this.sources[0].id;
     this.model.fileConfig = new FileConfig('');
+  }
+
+  createInventory(): void {
+    this.loading = true;
+
+    this.service.addInventory(this.model).subscribe(result => {
+      this.loading = false;
+      this.router.navigate(['inventories']);
+
+    }, err => {
+      this.loading = false;
+    });
   }
 }

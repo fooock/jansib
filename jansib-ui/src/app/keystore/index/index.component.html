@@ -1,4 +1,11 @@
-<div class="container">
+<div *ngIf="loading" class="container">
+  <h2>Keystores</h2>
+
+  <span class="spinner-grow text-secondary spinner-grow-sm btn-spinner" role="status" aria-hidden="true"></span>
+  <span class="mx-2 text-secondary">Loading...</span>
+</div>
+
+<div *ngIf=" !loading" class="container">
   <h2>Keystores</h2>
 
   <div *ngIf="keystores.length == 0">

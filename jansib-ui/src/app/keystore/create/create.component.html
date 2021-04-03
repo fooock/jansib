@@ -22,7 +22,7 @@
         <div class="col-7 mb-3">
           <label for="frmName" class="form-label"><strong>Name</strong></label>
           <input type="text" class="form-control" name="frmName" id="frmName" placeholder="Keystore name"
-            [(ngModel)]="model.name" required>
+            [(ngModel)]="model.name" [disabled]="loading" required>
           <small class="form-text text-muted">Required. Only alphanumeric and spaces are allowed.</small>
         </div>
       </div>
@@ -31,7 +31,7 @@
         <div class="col-7 mb-3">
           <label for="frmDescription" class="form-label"><strong>Description</strong></label>
           <input type="text" class="form-control" name="frmDescription" id="frmDescription"
-            placeholder="Keystore description" [(ngModel)]="model.description">
+            placeholder="Keystore description" [(ngModel)]="model.description" [disabled]="loading">
         </div>
       </div>
 
@@ -39,7 +39,7 @@
         <div class="col-2 mb-5">
           <label for="frmType" class="form-label"><strong>Type</strong></label>
           <select name="type" class="form-select" aria-label="Select keystore type" [(ngModel)]="model.type"
-            (ngModelChange)="onChange($event)">
+            (ngModelChange)="onChange($event)" [disabled]="loading">
             <option *ngFor=" let type of types" [ngValue]="type">
               {{ type }}
             </option>
@@ -52,7 +52,7 @@
           <div class="col-5 mb-3">
             <label for="frmSshUsername" class="form-label"><strong>Username</strong></label>
             <input type="text" class="form-control" name="frmSshUsername" id="frmSshUsername" placeholder="root"
-              [(ngModel)]="model.ssh!.username">
+              [(ngModel)]="model.ssh!.username" [disabled]="loading">
             <small class="form-text text-muted">The username to be used for SSH authentication. If not
               specified we will use <strong>root</strong> by default.</small>
           </div>
@@ -62,7 +62,7 @@
           <div class="col-5 mb-3">
             <label for="frmSshPassword" class="form-label"><strong>Password</strong></label>
             <input type="password" class="form-control" name="frmSshPassword" id="frmSshPassword" placeholder="password"
-              [(ngModel)]="model.ssh!.password">
+              [(ngModel)]="model.ssh!.password" [disabled]="loading">
             <small class="form-text text-muted">The password to be used for SSH authentication.</small>
           </div>
         </div>
@@ -71,7 +71,8 @@
           <div class="col-7 mb-2">
             <label for="frmSshPrivateKey" class="form-label"><strong>Private Key</strong></label>
             <textarea type="password" class=" form-control" rows="6" name="frmSshPrivateKey" id="frmSshPrivateKey"
-              placeholder="Paste here the content of your private key" [(ngModel)]="model.ssh!.privateKey"></textarea>
+              placeholder="Paste here the content of your private key" [disabled]="loading"
+              [(ngModel)]="model.ssh!.privateKey"></textarea>
             <div class="alert alert-warning mt-2" role="alert">
               Private key is not visible later on the user interface.
             </div>
@@ -82,15 +83,17 @@
           <div class="col-5 mb-3">
             <label for="frmSshPassphrase" class="form-label"><strong>Private Key Passphrase</strong></label>
             <input type="password" class="form-control" name="frmSshPassphrase" id="frmSshPassphrase"
-              placeholder="passphrase" [(ngModel)]="model.ssh!.passphrase">
+              placeholder="passphrase" [(ngModel)]="model.ssh!.passphrase" [disabled]="loading">
             <small class="form-text text-muted">The password used to protect your passphrase, if any.</small>
           </div>
         </div>
       </div>
 
-      <button type="submit" class="btn btn-primary mt-3" [disabled]="!model.name">
+      <button type="submit" class="btn btn-primary mt-3" [disabled]="!model.name || loading" (click)="createKeystore()">
+        <span *ngIf="loading" class="spinner-grow spinner-grow-sm btn-spinner" role="status" aria-hidden="true"></span>
         Create
       </button>
+
     </form>
   </div>
 </div>

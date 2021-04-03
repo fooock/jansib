@@ -9,14 +9,22 @@ import { KeystoreService } from '../keystore.service';
 })
 export class IndexComponent implements OnInit {
   keystores: Keystore[] = [];
+  loading: boolean = true;
 
   constructor(
     private service: KeystoreService
   ) { }
 
   ngOnInit(): void {
-    this.service.getKeystores()
-      .subscribe(args => this.keystores = args,
-        err => console.log(err));
+    this.loading = true;
+
+    this.service.getKeystores().subscribe(args => {
+      this.keystores = args;
+      this.loading = false;
+
+    }, err => {
+      console.log(err);
+      this.loading = false;
+    });
   }
 }

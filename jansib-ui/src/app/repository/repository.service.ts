@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { delay } from 'rxjs/operators';
 import { Repository } from './repository';
 
 @Injectable({
@@ -13,11 +14,13 @@ export class RepositoryService {
     private client: HttpClient
   ) { }
 
-  addRepository(repository: Repository): void {
+  addRepository(repository: Repository): Observable<Repository[]> {
+    repository.id = Math.random().toString(36).substr(2, 5);
     this.repositories.push(repository);
+    return of(this.repositories).pipe(delay(1000));
   }
 
   getRepositories(): Observable<Repository[]> {
-    return of(this.repositories);
+    return of(this.repositories).pipe(delay(1000));
   }
 }

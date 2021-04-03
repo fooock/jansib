@@ -9,14 +9,22 @@ import { RepositoryService } from '../repository.service';
 })
 export class IndexComponent implements OnInit {
   repositories: Repository[] = [];
+  loading: boolean = false;
 
   constructor(
     private service: RepositoryService
   ) { }
 
   ngOnInit(): void {
-    this.service.getRepositories()
-      .subscribe(args => this.repositories = args,
-        err => console.log(err));
+    this.loading = true;
+
+    this.service.getRepositories().subscribe(args => {
+      this.repositories = args;
+      this.loading = false;
+
+    }, err => {
+      console.log(err);
+      this.loading = false;
+    });
   }
 }

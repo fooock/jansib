@@ -9,14 +9,22 @@ import { InventoryService } from '../inventory.service';
 })
 export class IndexComponent implements OnInit {
   inventories: Inventory[] = [];
+  loading: boolean = false;
 
   constructor(
     private service: InventoryService
   ) { }
 
   ngOnInit(): void {
-    this.service.getInventories()
-      .subscribe(args => this.inventories = args,
-        err => console.log(err));
+    this.loading = true;
+
+    this.service.getInventories().subscribe(args => {
+      this.inventories = args;
+      this.loading = false;
+
+    }, err => {
+      console.log(err);
+      this.loading = false;
+    });
   }
 }

@@ -27,3 +27,12 @@ label strong {
 .alert {
   font-size: 14px;
 }
+
+.form-control:disabled, .form-control[readonly], .form-select:disabled {
+  background-color: #f7f7f8;
+  opacity: 1;
+}
+
+.btn-spinner {
+  margin-bottom: 3px;
+}
