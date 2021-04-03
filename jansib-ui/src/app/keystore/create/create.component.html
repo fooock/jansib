@@ -17,10 +17,10 @@
   <div class="bg-data border-data p-4 mt-4">
     <h4>Create keystore</h4>
 
-    <form>
+    <form autocomplete="off">
       <div class="row">
         <div class="col-7 mb-3">
-          <label for="frmName" class="form-label">Name</label>
+          <label for="frmName" class="form-label"><strong>Name</strong></label>
           <input type="text" class="form-control" name="frmName" id="frmName" placeholder="Keystore name"
             [(ngModel)]="model.name" required>
           <small class="form-text text-muted">Required. Only alphanumeric and spaces are allowed.</small>
@@ -29,7 +29,7 @@
 
       <div class="row">
         <div class="col-7 mb-3">
-          <label for="frmDescription" class="form-label">Description</label>
+          <label for="frmDescription" class="form-label"><strong>Description</strong></label>
           <input type="text" class="form-control" name="frmDescription" id="frmDescription"
             placeholder="Keystore description" [(ngModel)]="model.description">
         </div>
@@ -37,7 +37,7 @@
 
       <div class="row">
         <div class="col-2 mb-5">
-          <label for="frmType" class="form-label">Type</label>
+          <label for="frmType" class="form-label"><strong>Type</strong></label>
           <select name="type" class="form-select" aria-label="Select keystore type" [(ngModel)]="model.type"
             (ngModelChange)="onChange($event)">
             <option *ngFor=" let type of types" [ngValue]="type">
@@ -50,7 +50,7 @@
       <div *ngIf="model.type == 'SSH'">
         <div class="row">
           <div class="col-5 mb-3">
-            <label for="frmSshUsername" class="form-label">Username</label>
+            <label for="frmSshUsername" class="form-label"><strong>Username</strong></label>
             <input type="text" class="form-control" name="frmSshUsername" id="frmSshUsername" placeholder="root"
               [(ngModel)]="model.ssh!.username">
             <small class="form-text text-muted">The username to be used for SSH authentication. If not
@@ -60,7 +60,7 @@
 
         <div class="row">
           <div class="col-5 mb-3">
-            <label for="frmSshPassword" class="form-label">Password</label>
+            <label for="frmSshPassword" class="form-label"><strong>Password</strong></label>
             <input type="password" class="form-control" name="frmSshPassword" id="frmSshPassword" placeholder="password"
               [(ngModel)]="model.ssh!.password">
             <small class="form-text text-muted">The password to be used for SSH authentication.</small>
@@ -68,19 +68,19 @@
         </div>
 
         <div class="row">
-          <div class="col-7 mb-3">
-            <label for="frmSshPrivateKey" class="form-label">Private Key</label>
+          <div class="col-7 mb-2">
+            <label for="frmSshPrivateKey" class="form-label"><strong>Private Key</strong></label>
             <textarea type="password" class=" form-control" rows="6" name="frmSshPrivateKey" id="frmSshPrivateKey"
               placeholder="Paste here the content of your private key" [(ngModel)]="model.ssh!.privateKey"></textarea>
             <div class="alert alert-warning mt-2" role="alert">
-              Private key is not visible later on the user interface. Be sure to put the correct value.
+              Private key is not visible later on the user interface.
             </div>
           </div>
         </div>
 
         <div class="row">
           <div class="col-5 mb-3">
-            <label for="frmSshPassphrase" class="form-label">Private Key Passphrase</label>
+            <label for="frmSshPassphrase" class="form-label"><strong>Private Key Passphrase</strong></label>
             <input type="password" class="form-control" name="frmSshPassphrase" id="frmSshPassphrase"
               placeholder="passphrase" [(ngModel)]="model.ssh!.passphrase">
             <small class="form-text text-muted">The password used to protect your passphrase, if any.</small>
@@ -88,7 +88,7 @@
         </div>
       </div>
 
-      <button type="button" class="btn btn-primary mt-3">
+      <button type="button" class="btn btn-primary mt-3" [disabled]="!model.name">
         Create
       </button>
     </form>
