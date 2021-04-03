@@ -7,7 +7,7 @@ import { Keystore, SshConfig } from '../keystore';
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
-  types: string[] = ['SSH', 'Amazon'];
+  types: string[] = ['SSH'];
   model: Keystore = new Keystore('', '', '', this.types[0]);
 
   constructor() { }

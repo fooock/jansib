@@ -49,7 +49,7 @@
 
       <div *ngIf="model.type == 'SSH'">
         <div class="row">
-          <div class="col-7 mb-3">
+          <div class="col-5 mb-3">
             <label for="frmSshUsername" class="form-label">Username</label>
             <input type="text" class="form-control" name="frmSshUsername" id="frmSshUsername" placeholder="root"
               [(ngModel)]="model.ssh!.username">
@@ -59,7 +59,7 @@
         </div>
 
         <div class="row">
-          <div class="col-7 mb-3">
+          <div class="col-5 mb-3">
             <label for="frmSshPassword" class="form-label">Password</label>
             <input type="password" class="form-control" name="frmSshPassword" id="frmSshPassword" placeholder="password"
               [(ngModel)]="model.ssh!.password">
@@ -72,11 +72,14 @@
             <label for="frmSshPrivateKey" class="form-label">Private Key</label>
             <textarea type="password" class=" form-control" rows="6" name="frmSshPrivateKey" id="frmSshPrivateKey"
               placeholder="Paste here the content of your private key" [(ngModel)]="model.ssh!.privateKey"></textarea>
+            <div class="alert alert-warning mt-2" role="alert">
+              Private key is not visible later on the user interface. Be sure to put the correct value.
+            </div>
           </div>
         </div>
 
         <div class="row">
-          <div class="col-7 mb-3">
+          <div class="col-5 mb-3">
             <label for="frmSshPassphrase" class="form-label">Private Key Passphrase</label>
             <input type="password" class="form-control" name="frmSshPassphrase" id="frmSshPassphrase"
               placeholder="passphrase" [(ngModel)]="model.ssh!.passphrase">
