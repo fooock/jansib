@@ -2,8 +2,8 @@
 
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item" aria-current="page">
-        <a routerLink="/repositories">repositories</a>
+      <li routerLink="/repositories" class="breadcrumb-item" aria-current="page">
+        repositories
       </li>
       <li class="breadcrumb-item active" aria-current="page">
         create
@@ -32,7 +32,7 @@
           <label for="frmUrl" class="form-label"><strong>URL</strong></label>
           <input type="text" class="form-control" name="frmUrl" id="frmUrl" placeholder="Repository URL"
             [(ngModel)]="model.url" required>
-          <small class="form-text text-muted">Required. The repository will be cloned using this URL.</small>
+          <small class="form-text text-muted">Required. Repository URL.</small>
         </div>
       </div>
 

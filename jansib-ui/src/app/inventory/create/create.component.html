@@ -1,0 +1,64 @@
+<div class="container">
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li routerLink="/inventories" class="breadcrumb-item" aria-current="page">
+        inventories
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">
+        create
+      </li>
+      <li *ngIf="model.name.length > 0" class="breadcrumb-item active" aria-current="page">
+        {{ model.name }}
+      </li>
+    </ol>
+  </nav>
+
+  <div class="bg-data border-data p-4 mt-4">
+    <h4>Create inventory</h4>
+
+    <form autocomplete="off">
+      <div class="row">
+        <div class="col-7 mb-3">
+          <label for="frmName" class="form-label"><strong>Name</strong></label>
+          <input type="text" class="form-control" name="frmName" id="frmName" placeholder="Inventory name"
+            [(ngModel)]="model.name" required>
+          <small class="form-text text-muted">Required. Only alphanumeric and spaces are allowed.</small>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-7 mb-3">
+          <label for="frmDescription" class="form-label"><strong>Description</strong></label>
+          <input type="text" class="form-control" name="frmDescription" id="frmDescription"
+            placeholder="Inventory description" [(ngModel)]=" model.description">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-2 mb-5">
+          <label for="frmSource" class="form-label"><strong>Source</strong></label>
+          <select name="source" class="form-select" aria-label="Select inventory source" [(ngModel)]="model.source">
+            <option *ngFor=" let source of sources" [ngValue]="source.id">
+              {{ source.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div *ngIf="model.source === 'file'" class="row">
+        <div class="col-7 mb-3">
+          <label for="frmFilePath" class="form-label"><strong>Path to inventory file</strong></label>
+          <input type="text" class="form-control" name="frmFilePath" id="frmFilePath" placeholder="Inventory file path"
+            [(ngModel)]="model.fileConfig!.path" required>
+          <small class="form-text text-muted">Required. Relative path to project root where inventory is.</small>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary mt-3" [disabled]="!model.name">
+        Create
+      </button>
+    </form>
+  </div>
+
+</div>
