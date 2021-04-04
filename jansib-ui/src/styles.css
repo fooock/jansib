@@ -36,3 +36,11 @@ label strong {
 .btn-spinner {
   margin-bottom: 3px;
 }
+
+thead {
+  background-color: #f7f7f8;
+}
+
+tbody tr:hover {
+  background-color: #f7f7f8 !important; 
+}

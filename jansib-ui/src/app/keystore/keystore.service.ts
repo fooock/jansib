@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
+import { Key } from 'selenium-webdriver';
 import { Keystore, SshConfig } from './keystore';
 
 @Injectable({
@@ -12,7 +13,10 @@ export class KeystoreService {
 
   constructor(
     private client: HttpClient
-  ) { }
+  ) {
+    const k = new Keystore('1', 'asdasd', 'asdasd', 'ssh');
+    this.keystores.push(k);
+  }
 
   addKeystore(keystore: Keystore): Observable<Keystore> {
     keystore.id = Math.random().toString(36).substr(2, 5);

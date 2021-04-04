@@ -12,7 +12,10 @@ export class RepositoryService {
 
   constructor(
     private client: HttpClient
-  ) { }
+  ) {
+    const r = new Repository('324', 'erwer', 'asdfsdf', 'master', '1');
+    this.repositories.push(r);
+  }
 
   addRepository(repository: Repository): Observable<Repository[]> {
     repository.id = Math.random().toString(36).substr(2, 5);

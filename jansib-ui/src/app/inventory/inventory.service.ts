@@ -12,7 +12,10 @@ export class InventoryService {
 
   constructor(
     private client: HttpClient
-  ) { }
+  ) {
+    const i = new Inventory('13213', '111', '2222', 'file');
+    this.inventories.push(i);
+  }
 
   addInventory(inventory: Inventory): Observable<Inventory[]> {
     inventory.id = Math.random().toString(36).substr(2, 5);

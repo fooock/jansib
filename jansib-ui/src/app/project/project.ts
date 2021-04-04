@@ -6,7 +6,7 @@ export class Project {
     public name: string,
     public description: string,
     public created: number,
-    public jobs?: Job[]
+    public jobs: Job[] = []
   ) { }
 
   formattedDate(): string {

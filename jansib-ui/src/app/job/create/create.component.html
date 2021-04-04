@@ -1,16 +1,16 @@
-<div *ngIf="loading" class="container">
+<div *ngIf="loadingProject" class="container">
   <span class="spinner-grow text-secondary spinner-grow-sm btn-spinner" role="status" aria-hidden="true"></span>
   <span class="mx-2 text-secondary">Loading...</span>
 </div>
 
-<div *ngIf="!loading" class="container">
+<div *ngIf="!loadingProject" class="container">
 
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li routerLink="/projects" class="breadcrumb-item" aria-current="page">
         projects
       </li>
-      <li class="breadcrumb-item active" aria-current="page">
+      <li routerLink="/projects/{{project.id}}" class="breadcrumb-item active" aria-current="page">
         {{ project.id }}
       </li>
       <li class="breadcrumb-item" aria-current="page">
@@ -32,6 +32,106 @@
           <input type="text" class="form-control" name="frmName" id="frmName" placeholder="Job name"
             [(ngModel)]="model.name" [disabled]="loading" required>
           <small class="form-text text-muted">Required. Only alphanumeric and spaces are allowed.</small>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-2 mb-3">
+          <label for="frmBranch" class="form-label"><strong>Type</strong></label>
+          <select name="useAuth" id="useAuth" class="form-select" aria-label="Is auth required" [disabled]="loading"
+            [(ngModel)]="model.type">
+            <option *ngFor=" let t of types" [ngValue]="t.id">
+              {{ t.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-5 mb-3">
+          <label for="frmInventory" class="form-label"><strong>Inventory</strong></label>
+
+          <div *ngIf="loadingInventories">
+            <span class="spinner-grow text-secondary spinner-grow-sm btn-spinner" role="status"
+              aria-hidden="true"></span>
+            <span class="mx-2 text-secondary">Loading...</span>
+          </div>
+
+          <div *ngIf="inventories.length > 0 && !loadingInventories">
+            <select name="frmInventory" class="form-select" aria-label="Select inventory" [disabled]="loading"
+              [(ngModel)]="model.inventoryId">
+              <option *ngFor=" let i of inventories" [ngValue]="i.id">
+                {{ i.name }}
+              </option>
+            </select>
+          </div>
+
+          <div *ngIf="inventories.length == 0 && !loadingInventories">
+            <p class="text-secondary mt-0">No inventories found.</p>
+            <button type="button" class="btn btn-outline-primary btn-sm" routerLink="/inventories/create">
+              Create Inventory
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-5 mb-3">
+          <label for="frmKeystore" class="form-label"><strong>Keystore</strong></label>
+
+          <div *ngIf="loadingKeystore">
+            <span class="spinner-grow text-secondary spinner-grow-sm btn-spinner" role="status"
+              aria-hidden="true"></span>
+            <span class="mx-2 text-secondary">Loading...</span>
+          </div>
+
+          <div *ngIf="keystores.length > 0 && !loadingKeystore">
+            <select name="frmKeystore" class="form-select" aria-label="Select keystore" [disabled]="loading"
+              [(ngModel)]="model.keystoreId">
+              <option *ngFor=" let ks of keystores" [ngValue]="ks.id">
+                {{ ks.name }}
+              </option>
+            </select>
+            <small class="form-text text-muted">This key will be used to access inventory hosts.</small>
+          </div>
+
+          <div *ngIf="keystores.length == 0 && !loadingKeystore">
+            <p class="text-secondary mt-0">No keystores found.</p>
+            <button type="button" class="btn btn-outline-primary btn-sm" routerLink="/keystores/create">
+              Create keystore
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-5 mb-3">
+          <label for="frmRepository" class="form-label"><strong>Repository</strong></label>
+
+          <div *ngIf="loadingRepositories">
+            <span class="spinner-grow text-secondary spinner-grow-sm btn-spinner" role="status"
+              aria-hidden="true"></span>
+            <span class="mx-2 text-secondary">Loading...</span>
+          </div>
+
+          <div *ngIf="repositories.length > 0 && !loadingRepositories">
+            <select name="frmRepository" class="form-select" aria-label="Select repository" [disabled]="loading"
+              [(ngModel)]="model.repositoryId">
+              <option *ngFor=" let r of repositories" [ngValue]="r.id">
+                {{ r.name }}
+              </option>
+            </select>
+          </div>
+
+          <div *ngIf="repositories.length == 0 && !loadingRepositories">
+            <p class="text-secondary mt-0">No repositories found.</p>
+            <button type="button" class="btn btn-outline-primary btn-sm" routerLink="/repositories/create">
+              Create repository
+            </button>
+          </div>
+
         </div>
       </div>
 
