@@ -35,8 +35,7 @@
         </div>
       </div>
 
-      <button type="submit" class="btn btn-primary mt-3" [disabled]="!model.name || loading"
-        (click)="createProject()">
+      <button type="submit" class="btn btn-primary mt-3" [disabled]="!model.name || loading" (click)="createProject()">
         <span *ngIf="loading" class="spinner-grow spinner-grow-sm btn-spinner" role="status" aria-hidden="true"></span>
         Create
       </button>

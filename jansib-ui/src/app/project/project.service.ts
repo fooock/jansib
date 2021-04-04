@@ -13,7 +13,7 @@ export class ProjectService {
   constructor(private client: HttpClient) { }
 
   getProjects(): Observable<Project[]> {
-    const p1 = new Project('', 'Project 1', 'This is the description of the project 1', 0);
+    const p1 = new Project('', 'Project 1', '', 0);
     const p2 = new Project('', 'Project 2', 'This is the description of the project 2', 0);
     this.projects.push(p1, p2);
     return of(this.projects).pipe(delay(100));
