@@ -48,3 +48,11 @@ tbody tr:hover {
 tbody tr {
   border-bottom: 1px solid #f7f7f8 !important;
 }
+
+tbody tr td {
+  font-size: .95em;
+}
+
+tbody tr td a {
+  text-decoration: none;
+}

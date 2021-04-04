@@ -58,11 +58,11 @@
         </thead>
         <tbody>
           <tr *ngFor="let j of model.jobs">
-            <td>{{ j.name }}</td>
+            <td><a href="">{{ j.name }}</a></td>
             <td>{{ j.type }}</td>
-            <td>{{ j.keystoreId }}</td>
-            <td>{{ j.inventoryId }}</td>
-            <td>{{ j.repositoryId }}</td>
+            <td><a routerLink="/keystores">{{ j.keystoreId }}</a></td>
+            <td><a routerLink="/inventories">{{ j.inventoryId }}</a></td>
+            <td><a routerLink="/repositories">{{ j.repositoryId }}</a></td>
           </tr>
         </tbody>
       </table>

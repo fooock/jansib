@@ -68,14 +68,11 @@
         </div>
 
         <div class="row">
-          <div class="col-7 mb-2">
+          <div class="col-7 mb-3">
             <label for="frmSshPrivateKey" class="form-label"><strong>Private Key</strong></label>
             <textarea type="password" class=" form-control" rows="6" name="frmSshPrivateKey" id="frmSshPrivateKey"
               placeholder="Paste here the content of your private key" [disabled]="loading"
               [(ngModel)]="model.ssh!.privateKey"></textarea>
-            <div class="alert alert-warning mt-2" role="alert">
-              Private key is not visible later on the user interface.
-            </div>
           </div>
         </div>
 
