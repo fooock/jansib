@@ -17,6 +17,7 @@ export class ProjectService {
   }
 
   addProject(project: Project): Observable<Project[]> {
+    project.id = Math.random().toString(36).substr(2, 5);
     this.projects.push(project);
     return of(this.projects).pipe(delay(1000));
   }

@@ -18,8 +18,10 @@ export class IndexComponent implements OnInit {
   ngOnInit(): void {
     this.loading = true;
 
-    this.projectService.getProjects().subscribe(_ => {
+    this.projectService.getProjects().subscribe(result => {
       this.loading = false;
+      this.projects = result;
+      
     }, err => {
       this.loading = false;
     });
