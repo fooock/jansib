@@ -16,6 +16,10 @@ const routes: Routes = [
   {
     path: ':id',
     component: DetailComponent
+  },
+  {
+    path: ':id/job',
+    loadChildren: '../job/job.module#JobModule'
   }
 ];
 

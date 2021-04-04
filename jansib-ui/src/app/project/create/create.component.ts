@@ -25,7 +25,7 @@ export class CreateComponent implements OnInit {
 
     this.service.addProject(this.model).subscribe(result => {
       this.loading = false;
-      this.router.navigate(['projects']);
+      this.router.navigate(['projects', result.id]);
 
     }, err => {
       console.error(err);

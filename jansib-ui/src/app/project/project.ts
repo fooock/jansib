@@ -1,3 +1,5 @@
+import { Job } from "../job/job";
+
 export class Project {
   constructor(
     public id: string,
@@ -11,16 +13,4 @@ export class Project {
     const d = new Date(this.created * 1000);
     return d.toLocaleDateString();
   }
-}
-
-export class Job {
-  constructor(
-    public id: string,
-    public name: string,
-    public type: string,
-    public repositoryId: string,
-    public inventoryId: string,
-    public keystoreId: string,
-    public created: number
-  ) { }
 }

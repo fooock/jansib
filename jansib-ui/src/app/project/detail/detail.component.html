@@ -40,7 +40,7 @@
 
     <div *ngIf="!model.jobs || model.jobs?.length === 0">
       <p class="text-secondary">No jobs found for this project.</p>
-      <button type="button" class="btn btn-primary">
+      <button type="button" class="btn btn-primary" routerLink="job">
         Create job
       </button>
     </div>

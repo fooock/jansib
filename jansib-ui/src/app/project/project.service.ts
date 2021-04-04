@@ -20,11 +20,11 @@ export class ProjectService {
     return of(this.projects).pipe(delay(100));
   }
 
-  addProject(project: Project): Observable<Project[]> {
+  addProject(project: Project): Observable<Project> {
     project.id = Math.random().toString(36).substr(2, 5);
     project.created = Math.floor(Date.now() / 1000);
     this.projects.push(project);
-    return of(this.projects).pipe(delay(1000));
+    return of(project).pipe(delay(1000));
   }
 
   getProjectById(id: string): Observable<Project> {
