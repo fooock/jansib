@@ -1,0 +1,12 @@
+.project {
+  border-left: 4px solid transparent;
+}
+
+.project:hover {
+  border-left: 4px solid #0d6efd;
+}
+
+.project-block {
+  text-decoration: none;
+  display: block;
+}

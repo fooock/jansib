@@ -4,11 +4,13 @@ import { ProjectRoutingModule } from './project-routing.module';
 import { IndexComponent } from './index/index.component';
 import { CreateComponent } from './create/create.component';
 import { FormsModule } from '@angular/forms';
+import { ListComponent } from './list/list.component';
 
 @NgModule({
   declarations: [
     IndexComponent,
-    CreateComponent
+    CreateComponent,
+    ListComponent
   ],
   imports: [
     CommonModule,
