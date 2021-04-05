@@ -1,0 +1,41 @@
+<div class="mt-4">
+
+  <div class="bg-data border-data p-3 mt-3">
+    <table class="table table-borderless mt-2">
+      <thead>
+        <tr class="table-light text-secondary">
+          <th scope=" col">Name</th>
+          <th scope="col">Branch</th>
+          <th scope="col">Type</th>
+          <th scope="col">Keystore</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of repositories">
+          <td>
+            <div title="{{ item.url }}">
+              <a href="{{ item.url }}" target="_blank">{{ item.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div>
+              {{ item.branch }}
+            </div>
+          </td>
+          <td>
+            <div>
+              <i *ngIf="item.isPrivate()" style="font-size:24px; color: rgb(201, 201, 201);" class="fa fa-lock mx-2"></i>
+              <i *ngIf="!item.isPrivate()" style="font-size:24px; color: rgb(201, 201, 201);" class="fa fa-unlock mx-2"></i>
+            </div>
+          </td>
+          <td>
+            <div>
+              <a href="">{{ item.keyId }}</a>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

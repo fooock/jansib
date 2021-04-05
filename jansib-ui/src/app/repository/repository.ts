@@ -6,4 +6,8 @@ export class Repository {
     public branch: string = 'master',
     public keyId: string
   ) { }
+
+  isPrivate(): boolean {
+    return this.keyId.length > 0;
+  }
 }

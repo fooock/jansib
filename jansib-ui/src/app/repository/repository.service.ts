@@ -13,8 +13,10 @@ export class RepositoryService {
   constructor(
     private client: HttpClient
   ) {
-    const r = new Repository('324', 'erwer', 'asdfsdf', 'master', '1');
-    this.repositories.push(r);
+    const r1 = new Repository('324234', 'jansib', 'https://github.com/fooock/jansib', 'master', '');
+    const r2 = new Repository('324535', 'kubespray', 'https://github.com/kubernetes-sigs/kubespray', 'master', '199798797 dgdfgdg979');
+    const r3 = new Repository('636405', 'sdfsfsdf', 'https://docs.ansible.com/ansible-tower/latest/html/userguide/job_templates.html#create-a-job-template', 'v1.4.0', '123434')
+    this.repositories.push(r1, r2, r3);
   }
 
   addRepository(repository: Repository): Observable<Repository[]> {

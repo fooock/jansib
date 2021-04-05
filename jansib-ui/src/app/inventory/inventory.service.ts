@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { of, Observable } from 'rxjs';
 import { delay } from 'rxjs/operators';
-import { Inventory } from './inventory';
+import { FileConfig, Inventory } from './inventory';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,8 @@ export class InventoryService {
   constructor(
     private client: HttpClient
   ) {
-    const i = new Inventory('13213', '111', '2222', 'file');
+    const i = new Inventory('13213', 'my custom inventory file', 'This is a short description', 'file', 
+      new FileConfig('/path/to/my/inventory.ini'));
     this.inventories.push(i);
   }
 

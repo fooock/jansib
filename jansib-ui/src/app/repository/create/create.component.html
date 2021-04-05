@@ -50,7 +50,7 @@
         <div class="col-2 mb-3">
           <label for="frmBranch" class="form-label"><strong>Use auth?</strong></label>
           <select name="useAuth" id="useAuth" class="form-select" aria-label="Is auth required" [disabled]="loading"
-            [(ngModel)]="useAuth">
+            [(ngModel)]="useAuth" (ngModelChange)="onChange($event)">
             <option *ngFor=" let v of authValues" [ngValue]="v.value">
               {{ v.name }}
             </option>

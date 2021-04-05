@@ -14,7 +14,7 @@ export class KeystoreService {
   constructor(
     private client: HttpClient
   ) {
-    const k = new Keystore('1', 'asdasd', 'asdasd', 'ssh');
+    const k = new Keystore('1', 'Hetzner servers', 'My short description', 'ssh', new SshConfig('root', '', '', ''));
     this.keystores.push(k);
   }
 
