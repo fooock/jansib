@@ -17,21 +17,18 @@
   </nav>
 
   <div class="bg-data border-data p-4 mt-4">
-    <h4>Project details</h4>
+    <h4>{{ model.name }}</h4>
 
-    <div class="mt-3">
-      <p class="m-0 text-primary"><strong>Name</strong></p>
-      <p class="text-secondary mb-0">{{ model.name }}</p>
-    </div>
-
-    <div *ngIf="model.description.length > 0" class="mt-3">
-      <p class="m-0 text-primary"><strong>Description</strong></p>
-      <p class="text-secondary mb-0">{{ model.description }}</p>
-    </div>
-
-    <div class="mt-3">
-      <p class="m-0 text-primary"><strong>Created</strong></p>
-      <p class="text-secondary mb-0">{{ model.formattedDate() }}</p>
+    <div class="row">
+      <div *ngIf="model.description.length > 0" class="col-auto mt-3">
+        <p class="m-0 text-primary"><strong>Description</strong></p>
+        <p class="text-secondary mb-0">{{ model.description }}</p>
+      </div>
+      <div *ngIf="model.description.length > 0" class="col-1"></div>
+      <div class="col-auto mt-3">
+        <p class="m-0 text-primary"><strong>Created</strong></p>
+        <p class="text-secondary mb-0">{{ model.formattedDate() }}</p>
+      </div>
     </div>
   </div>
 
