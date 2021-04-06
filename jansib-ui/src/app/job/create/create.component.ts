@@ -22,7 +22,7 @@ export class CreateComponent implements OnInit {
   inventories: Inventory[] = [];
   repositories: Repository[] = [];
 
-  model: Job = new Job('', '', 'run', '', '', '', 0);
+  model: Job = new Job('', '', 'run', '', '', '', 0, 'created');
 
   loading: boolean = false;
   loadingKeystore: boolean = false;

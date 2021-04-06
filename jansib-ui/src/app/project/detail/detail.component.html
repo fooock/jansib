@@ -20,13 +20,13 @@
     <h4>{{ model.name }}</h4>
 
     <div class="row">
-      <div *ngIf="model.description.length > 0" class="col-auto mt-3">
+      <div *ngIf="model.description.length > 0" class="col-auto mt-2">
         <p class="m-0 text-primary"><strong>Description</strong></p>
         <p class="text-secondary mb-0">{{ model.description }}</p>
       </div>
       <div *ngIf="model.description.length > 0" class="col-1"></div>
-      <div class="col-auto mt-3">
-        <p class="m-0 text-primary"><strong>Created</strong></p>
+      <div class="col-auto mt-2">
+        <p class="m-0 text-primary"><strong>Created at</strong></p>
         <p class="text-secondary mb-0">{{ model.formattedDate() }}</p>
       </div>
     </div>
@@ -46,6 +46,7 @@
       <table class="table table-borderless mt-2">
         <thead>
           <tr class="table-light text-secondary">
+            <th scope=" col">State</th>
             <th scope=" col">Name</th>
             <th scope="col">Type</th>
             <th scope="col">Keystore</th>
@@ -55,6 +56,9 @@
         </thead>
         <tbody>
           <tr *ngFor="let j of model.jobs">
+            <td style="width: 90px;">
+              <div title="{{ j.state }}" class="square-created"></div>
+            </td>
             <td><a href="">{{ j.name }}</a></td>
             <td>{{ j.type }}</td>
             <td><a routerLink="/keystores">{{ j.keystoreId }}</a></td>

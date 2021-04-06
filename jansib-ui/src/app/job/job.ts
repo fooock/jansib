@@ -6,6 +6,7 @@ export class Job {
     public repositoryId: string,
     public inventoryId: string,
     public keystoreId: string,
-    public created: number
+    public created: number,
+    public state: string
   ) { }
 }

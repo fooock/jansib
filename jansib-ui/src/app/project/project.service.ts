@@ -12,12 +12,12 @@ export class ProjectService {
   public projects: Project[] = [];
 
   constructor(private client: HttpClient) {
-    const j1 = new Job('1', 'dfgdsfg', 'run', 'asdfa', 'asdfadf', 'adsfadsf', 0);
+    const j1 = new Job('1', 'Update system dependencies', 'run', 'Dg5EktLu4m', '9EqkdfHE4i', 'FKrdS1354I', 0, 'created');
 
-    const p1 = new Project('123', 'Project 1', '', 1617555292);
+    const p1 = new Project('vgPM9gNmZX', 'Project 1', '', 1617555292);
     p1.jobs.push(j1);
 
-    const p2 = new Project('345', 'Project 2', 'This is the description of the project 2', 1617555292);
+    const p2 = new Project('ZxyhabSI2A', 'Project 2', 'This is the description of the project 2', 1617555292);
     this.projects.push(p1, p2);
   }
 
