@@ -21,4 +21,9 @@ export class JobService {
     });
     return of(job).pipe(delay(1000));
   }
+
+  getJobDetail(projectId: string, jobId: string): Observable<Job> {
+    const job = new Job(jobId, 'Update system dependencies', '', '', '', '', 0, 'created');
+    return of(job).pipe(delay(500));
+  }
 }

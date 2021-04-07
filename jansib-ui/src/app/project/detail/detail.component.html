@@ -20,57 +20,79 @@
     <h4>{{ model.name }}</h4>
 
     <div class="row">
-      <div *ngIf="model.description.length > 0" class="col-auto mt-2">
+      <div *ngIf="model.description.length > 0" class="col-auto mt-1">
         <p class="m-0 text-primary"><strong>Description</strong></p>
         <p class="text-secondary mb-0">{{ model.description }}</p>
       </div>
       <div *ngIf="model.description.length > 0" class="col-1"></div>
-      <div class="col-auto mt-2">
+      <div class="col-auto mt-1">
         <p class="m-0 text-primary"><strong>Created at</strong></p>
         <p class="text-secondary mb-0">{{ model.formattedDate() }}</p>
       </div>
     </div>
   </div>
 
-  <div class="bg-data border-data p-4 mt-2">
-    <h5>Jobs</h5>
+  <div class="bg-data border-data p-3 mt-2">
 
-    <div *ngIf="!model.jobs || model.jobs?.length === 0">
-      <p class="text-secondary">No jobs found for this project.</p>
-      <button type="button" class="btn btn-primary" routerLink="job">
-        Create job
-      </button>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="jobs-tab" data-bs-toggle="tab" data-bs-target="#jobs" type="button" role="tab" aria-controls="jobs" aria-selected="true">
+          <h6>Jobs</h6>
+        </button>
+      </li>
+      <li class="nav-item" role="presentation" *ngIf="model.jobs!.length > 0">
+        <button class="nav-link" id="activity-tab" data-bs-toggle="tab" data-bs-target="#activity" type="button" role="tab" aria-controls="profile" aria-selected="false">
+          <h6>Activity</h6>
+        </button>
+      </li>
+    </ul>
+
+    <div class="tab-content">
+      <div class="tab-pane fade show active" id="jobs" role="tabpanel" aria-labelledby="jobs-tab">
+
+        <div *ngIf="!model.jobs || model.jobs?.length === 0" class="mt-2 p-2">
+          <p class="text-secondary">No jobs found for this project.</p>
+          <button type="button" class="btn btn-primary" routerLink="job">
+            Create job
+          </button>
+        </div>
+    
+        <div *ngIf="model.jobs && model.jobs!.length > 0" class="mt-1 p-2">
+          <table class="table table-borderless mt-2">
+            <thead>
+              <tr class="table-light text-secondary">
+                <th scope=" col">State</th>
+                <th scope=" col">Name</th>
+                <th scope="col">Type</th>
+                <th scope="col">Keystore</th>
+                <th scope="col">Inventory</th>
+                <th scope="col">Repository</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let j of model.jobs">
+                <td style="width: 90px;">
+                  <div title="{{ j.state }}" class="square-created"></div>
+                </td>
+                <td><a routerLink="job/{{j.id}}">{{ j.name }}</a></td>
+                <td>{{ j.type }}</td>
+                <td><a routerLink="/keystores">{{ j.keystoreId }}</a></td>
+                <td><a routerLink="/inventories">{{ j.inventoryId }}</a></td>
+                <td><a routerLink="/repositories">{{ j.repositoryId }}</a></td>
+              </tr>
+            </tbody>
+          </table>
+    
+          <button type="button" class="btn btn-primary mt-1" routerLink="job">
+            Create job
+          </button>
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="activity" role="tabpanel" aria-labelledby="activity-tab">
+
+      </div>
     </div>
 
-    <div *ngIf="model.jobs && model.jobs!.length > 0" class="mt-2">
-      <table class="table table-borderless mt-2">
-        <thead>
-          <tr class="table-light text-secondary">
-            <th scope=" col">State</th>
-            <th scope=" col">Name</th>
-            <th scope="col">Type</th>
-            <th scope="col">Keystore</th>
-            <th scope="col">Inventory</th>
-            <th scope="col">Repository</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let j of model.jobs">
-            <td style="width: 90px;">
-              <div title="{{ j.state }}" class="square-created"></div>
-            </td>
-            <td><a href="">{{ j.name }}</a></td>
-            <td>{{ j.type }}</td>
-            <td><a routerLink="/keystores">{{ j.keystoreId }}</a></td>
-            <td><a routerLink="/inventories">{{ j.inventoryId }}</a></td>
-            <td><a routerLink="/repositories">{{ j.repositoryId }}</a></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <button type="button" class="btn btn-primary mt-1" routerLink="job">
-        Create job
-      </button>
-    </div>
   </div>
 </div>

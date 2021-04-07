@@ -1,0 +1,32 @@
+<div *ngIf="loading" class="container">
+  <span class="spinner-grow text-secondary spinner-grow-sm btn-spinner" role="status" aria-hidden="true"></span>
+  <span class="mx-2 text-secondary">Loading...</span>
+</div>
+
+<div *ngIf="!loading" class="container">
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li routerLink="/projects" class="breadcrumb-item" aria-current="page">
+        projects
+      </li>
+      <li routerLink="/projects/{{ projectId }}" class="breadcrumb-item" aria-current="page">
+        {{ projectId }}
+      </li>
+      <li class="breadcrumb-item" aria-current="page">
+        job
+      </li>
+      <li *ngIf="model.name.length > 0" class="breadcrumb-item active" aria-current="page">
+        {{ model.id }}
+      </li>
+    </ol>
+  </nav>
+
+  <div class="bg-data border-data p-4 mt-4">
+    <h4>{{ model.name }}</h4>
+
+    <div *ngIf="model.state === 'created'">
+      <span class="text-secondary">Not executed</span>
+    </div>
+  </div>
+</div>

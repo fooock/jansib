@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 import { JobRoutingModule } from './job-routing.module';
 import { CreateComponent } from './create/create.component';
 import { FormsModule } from '@angular/forms';
+import { DetailComponent } from './detail/detail.component';
 
 @NgModule({
-  declarations: [CreateComponent],
+  declarations: [CreateComponent, DetailComponent],
   imports: [
     CommonModule,
     FormsModule,
