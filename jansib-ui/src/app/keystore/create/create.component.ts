@@ -13,6 +13,9 @@ export class CreateComponent implements OnInit {
   model: Keystore = new Keystore('', '', '', '');
   loading: boolean = false;
 
+  sshPasswordVisible: boolean = false;
+  sshPassphraseVisible: boolean = false;
+
   constructor(
     private service: KeystoreService,
     private router: Router

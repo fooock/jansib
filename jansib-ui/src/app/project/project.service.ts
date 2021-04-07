@@ -22,21 +22,21 @@ export class ProjectService {
   }
 
   getProjects(): Observable<Project[]> {
-    return of(this.projects).pipe(delay(1000));
+    return of(this.projects).pipe(delay(500));
   }
 
   addProject(project: Project): Observable<Project> {
     project.id = Math.random().toString(36).substr(2, 5);
     project.created = Math.floor(Date.now() / 1000);
     this.projects.push(project);
-    return of(project).pipe(delay(1000));
+    return of(project).pipe(delay(500));
   }
 
   getProjectById(id: string): Observable<Project> {
     for (let index = 0; index < this.projects.length; index++) {
       const p = this.projects[index];
       if (p.id == id) {
-        return of(p).pipe(delay(1000));
+        return of(p).pipe(delay(500));
       }
     }
     return throwError("not found");

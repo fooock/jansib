@@ -61,8 +61,20 @@
         <div class="row">
           <div class="col-5 mb-3">
             <label for="frmSshPassword" class="form-label"><strong>Password</strong></label>
-            <input type="password" class="form-control" name="frmSshPassword" id="frmSshPassword" placeholder="password"
-              [(ngModel)]="model.ssh!.password" [disabled]="loading">
+            
+            <div class="input-group">
+              <input type="password" class="form-control" name="frmSshPassword" id="frmSshPassword" placeholder="password"
+                [(ngModel)]="model.ssh!.password"
+                type="{{ sshPasswordVisible ? 'text' : 'password'}}" 
+                [disabled]="loading">     
+
+              <button class="btn btn-outline-primary" 
+                (click)="sshPasswordVisible = !sshPasswordVisible" 
+                type="button">
+                {{ sshPasswordVisible ? 'Hide' : 'Show'}}
+              </button>
+            </div>
+
             <small class="form-text text-muted">The password to be used for SSH authentication.</small>
           </div>
         </div>
@@ -79,8 +91,20 @@
         <div class="row">
           <div class="col-5 mb-3">
             <label for="frmSshPassphrase" class="form-label"><strong>Private Key Passphrase</strong></label>
-            <input type="password" class="form-control" name="frmSshPassphrase" id="frmSshPassphrase"
-              placeholder="passphrase" [(ngModel)]="model.ssh!.passphrase" [disabled]="loading">
+
+            <div class="input-group">
+              <input type="password" class="form-control" name="frmSshPassphrase" id="frmSshPassphrase" placeholder="passphrase"
+                [(ngModel)]="model.ssh!.passphrase"
+                type="{{ sshPassphraseVisible ? 'text' : 'password'}}" 
+                [disabled]="loading">     
+
+              <button class="btn btn-outline-primary" 
+                (click)="sshPassphraseVisible = !sshPassphraseVisible" 
+                type="button">
+                {{ sshPassphraseVisible ? 'Hide' : 'Show'}}
+              </button>
+            </div>
+
             <small class="form-text text-muted">The password used to protect your passphrase, if any.</small>
           </div>
         </div>

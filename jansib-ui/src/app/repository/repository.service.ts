@@ -22,10 +22,10 @@ export class RepositoryService {
   addRepository(repository: Repository): Observable<Repository[]> {
     repository.id = Math.random().toString(36).substr(2, 5);
     this.repositories.push(repository);
-    return of(this.repositories).pipe(delay(1000));
+    return of(this.repositories).pipe(delay(500));
   }
 
   getRepositories(): Observable<Repository[]> {
-    return of(this.repositories).pipe(delay(1000));
+    return of(this.repositories).pipe(delay(500));
   }
 }

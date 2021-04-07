@@ -19,7 +19,7 @@ export class JobService {
     this.projectService.getProjectById(projectId).subscribe(result => {
       result.jobs.push(job);
     });
-    return of(job).pipe(delay(1000));
+    return of(job).pipe(delay(500));
   }
 
   getJobDetail(projectId: string, jobId: string): Observable<Job> {

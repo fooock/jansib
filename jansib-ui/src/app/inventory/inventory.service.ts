@@ -21,10 +21,10 @@ export class InventoryService {
   addInventory(inventory: Inventory): Observable<Inventory[]> {
     inventory.id = Math.random().toString(36).substr(2, 5);
     this.inventories.push(inventory);
-    return of(this.inventories).pipe(delay(1000));
+    return of(this.inventories).pipe(delay(500));
   }
 
   getInventories(): Observable<Inventory[]> {
-    return of(this.inventories).pipe(delay(1000));
+    return of(this.inventories).pipe(delay(500));
   }
 }

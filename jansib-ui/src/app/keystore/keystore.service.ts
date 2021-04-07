@@ -21,12 +21,12 @@ export class KeystoreService {
   addKeystore(keystore: Keystore): Observable<Keystore> {
     keystore.id = Math.random().toString(36).substr(2, 5);
     this.keystores.push(keystore);
-    return of(keystore).pipe(delay(1000));
+    return of(keystore).pipe(delay(500));
   }
 
   getKeystores(): Observable<Keystore[]> {
     //const k = new Keystore('12', 'github token', 'dfgsdfgsdfg', 'SSH', new SshConfig('', '', '', ''));
     //this.keystores.push(k);
-    return of(this.keystores).pipe(delay(1000));
+    return of(this.keystores).pipe(delay(500));
   }
 }

@@ -24,8 +24,7 @@
           </td>
           <td>
             <div>
-              <i *ngIf="item.isPrivate()" style="font-size:24px; color: rgb(201, 201, 201);" class="fa fa-lock mx-2"></i>
-              <i *ngIf="!item.isPrivate()" style="font-size:24px; color: rgb(201, 201, 201);" class="fa fa-unlock mx-2"></i>
+              {{ item.isPrivate() ? "Private" : "Public"}}
             </div>
           </td>
           <td>
