@@ -26,7 +26,11 @@
     <h4>{{ model.name }}</h4>
 
     <div *ngIf="model.state === 'created'">
-      <span class="text-secondary">Not executed</span>
+      <p class="text-secondary mb-2">Not executed</p>
+      <button type="button" class="btn btn-primary" routerLink="job">
+        Run job
+      </button>
     </div>
+
   </div>
 </div>

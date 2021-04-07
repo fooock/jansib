@@ -3,3 +3,18 @@
   width: 24px;
   background-color: rgb(228, 228, 228);
 }
+
+.nav-tabs > .active > a, .nav-tabs > .active > a:hover, .nav-tabs > .active > a:focus {
+  border-color: #eeeeee;
+  border-bottom-color: transparent;
+}
+
+.nav-tabs {
+ border-bottom: 1px solid #eeeeee;
+}
+
+.nav-item .active {
+  border-top: 1px solid #eeeeee;
+  border-left: 1px solid #eeeeee;
+  border-right: 1px solid #eeeeee;
+}
