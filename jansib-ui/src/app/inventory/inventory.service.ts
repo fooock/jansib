@@ -27,4 +27,9 @@ export class InventoryService {
   getInventories(): Observable<Inventory[]> {
     return of(this.inventories).pipe(delay(500));
   }
+
+  getInventoryById(inventoryId: string): Observable<Inventory> {
+    const i = this.inventories.filter(r => r.id === inventoryId)[0];
+    return of(i).pipe(delay(300));
+  }
 }

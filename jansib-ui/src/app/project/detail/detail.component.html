@@ -17,18 +17,12 @@
   </nav>
 
   <div class="bg-data border-data p-4 mt-4">
-    <h4>{{ model.name }}</h4>
+    <h4 class="mb-1">{{ model.name }}</h4>
+    <p *ngIf="model.description.length > 0" class="text-secondary mb-0">{{ model.description }}</p>
 
-    <div class="row">
-      <div *ngIf="model.description.length > 0" class="col-auto mt-2">
-        <p class="m-0 text-primary"><strong>Description</strong></p>
-        <p class="text-secondary mb-0">{{ model.description }}</p>
-      </div>
-      <div *ngIf="model.description.length > 0" class="col-1"></div>
-      <div class="col-auto mt-2">
-        <p class="m-0 text-primary"><strong>Created at</strong></p>
-        <p class="text-secondary mb-0">{{ model.formattedDate() }}</p>
-      </div>
+    <div class="mt-2">
+      <p class="m-0 text-primary">Created at</p>
+      <p class="text-secondary mb-0">{{ model.formattedDate() }}</p>
     </div>
 
     <ul class="nav nav-tabs mt-4" id="myTab" role="tablist">
@@ -71,11 +65,27 @@
                 <td style="width: 60px;">
                   <div title="{{ j.state }}" class="square-created"></div>
                 </td>
-                <td><a routerLink="job/{{j.id}}">{{ j.name }}</a></td>
+                <td>
+                  <a routerLink="job/{{j.id}}">
+                    {{ j.name }}
+                  </a>
+                </td>
                 <td>{{ j.type }}</td>
-                <td><a routerLink="/keystores">{{ j.keystoreId }}</a></td>
-                <td><a routerLink="/inventories">{{ j.inventoryId }}</a></td>
-                <td><a routerLink="/repositories">{{ j.repositoryId }}</a></td>
+                <td>
+                  <a routerLink="/keystores/{{ j.keystoreId }}">
+                    {{ j.keystoreId }}
+                  </a>
+                </td>
+                <td>
+                  <a routerLink="/inventories/{{ j.inventoryId }}">
+                    {{ j.inventoryId }}
+                  </a>
+                </td>
+                <td>
+                  <a routerLink="/repositories/{{ j.repositoryId }}">
+                    {{ j.repositoryId }}
+                  </a>
+                </td>
               </tr>
             </tbody>
           </table>

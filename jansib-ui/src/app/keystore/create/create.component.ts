@@ -41,7 +41,7 @@ export class CreateComponent implements OnInit {
 
     this.service.addKeystore(this.model).subscribe(result => {
       this.loading = false;
-      this.router.navigate(['keystores']);
+      this.router.navigate(['keystores', result.id]);
 
     }, e => {
       this.loading = false;

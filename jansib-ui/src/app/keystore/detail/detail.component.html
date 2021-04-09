@@ -1,0 +1,32 @@
+<div *ngIf="loading" class="container">
+  <span class="spinner-grow text-secondary spinner-grow-sm btn-spinner" role="status" aria-hidden="true"></span>
+  <span class="mx-2 text-secondary">Loading...</span>
+</div>
+
+<div *ngIf="!loading" class="container">
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li routerLink="/keystores" class="breadcrumb-item" aria-current="page">
+        keystores
+      </li>
+      <li *ngIf="model.name.length > 0" class="breadcrumb-item active" aria-current="page">
+        {{ model.id }}
+      </li>
+    </ol>
+  </nav>
+
+  <div class="bg-data border-data p-4 mt-4">
+    <h4 class="mb-1">{{ model.name }}</h4>
+    <p *ngIf="model.description.length > 0" class="text-secondary">{{ model.description }}</p>
+
+    <div *ngIf="model.ssh" class="mt-3">
+      <h5>SSH configuration</h5>
+      <div class="mt-2">
+        <p class="m-0 text-primary">Username</p>
+        <p class="text-secondary mb-0">{{ model.ssh!.username }}</p>
+      </div>
+    </div>
+    
+  </div>
+</div>

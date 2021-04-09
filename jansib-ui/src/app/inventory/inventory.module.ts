@@ -5,12 +5,14 @@ import { IndexComponent } from './index/index.component';
 import { CreateComponent } from './create/create.component';
 import { FormsModule } from '@angular/forms';
 import { ListComponent } from './list/list.component';
+import { DetailComponent } from './detail/detail.component';
 
 @NgModule({
   declarations: [
     IndexComponent,
     CreateComponent,
-    ListComponent
+    ListComponent,
+    DetailComponent
   ],
   imports: [
     CommonModule,

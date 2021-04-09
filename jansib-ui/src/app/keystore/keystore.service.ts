@@ -14,7 +14,7 @@ export class KeystoreService {
   constructor(
     private client: HttpClient
   ) {
-    const k = new Keystore('1', 'Hetzner servers', 'My short description', 'ssh', new SshConfig('root', '', '', ''));
+    const k = new Keystore('1', 'Hetzner servers', 'My short description', 'SSH', new SshConfig('root', '', '', ''));
     this.keystores.push(k);
   }
 
@@ -28,5 +28,10 @@ export class KeystoreService {
     //const k = new Keystore('12', 'github token', 'dfgsdfgsdfg', 'SSH', new SshConfig('', '', '', ''));
     //this.keystores.push(k);
     return of(this.keystores).pipe(delay(500));
+  }
+
+  getKeystoreById(keyId: string): Observable<Keystore> {
+    const repo = this.keystores.filter(r => r.id === keyId)[0];
+    return of(repo).pipe(delay(300));
   }
 }

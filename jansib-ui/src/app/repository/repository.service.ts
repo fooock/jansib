@@ -28,4 +28,9 @@ export class RepositoryService {
   getRepositories(): Observable<Repository[]> {
     return of(this.repositories).pipe(delay(500));
   }
+
+  getRepositoryById(repoId: string): Observable<Repository> {
+    const repo = this.repositories.filter(r => r.id === repoId)[0];
+    return of(repo).pipe(delay(300));
+  }
 }

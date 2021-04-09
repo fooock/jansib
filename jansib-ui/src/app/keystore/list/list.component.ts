@@ -19,6 +19,6 @@ export class ListComponent implements OnInit {
   }
 
   getSshTypes(): Keystore[] {
-    return this.keystores.filter(k => k.type === 'ssh');
+    return this.keystores.filter(k => k.type === 'SSH');
   }
 }

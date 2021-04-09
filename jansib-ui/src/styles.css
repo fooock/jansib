@@ -53,6 +53,6 @@ tbody tr td {
   font-size: .95em;
 }
 
-tbody tr td a {
+tbody tr td a, a {
   text-decoration: none;
 }
