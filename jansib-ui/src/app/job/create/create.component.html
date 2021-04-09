@@ -28,7 +28,7 @@
     <form autocomplete="off">
       <div class="row">
         <div class="col-7 mb-3">
-          <label for="frmName" class="form-label"><strong>Name</strong></label>
+          <label for="frmName" class="form-label">Name</label>
           <input type="text" class="form-control" name="frmName" id="frmName" placeholder="Job name"
             [(ngModel)]="model.name" [disabled]="loading" required>
           <small class="form-text text-muted">Required. Only alphanumeric and spaces are allowed.</small>
@@ -49,7 +49,7 @@
 
       <div class="row">
         <div class="col-5 mb-3">
-          <label for="frmInventory" class="form-label"><strong>Inventory</strong></label>
+          <label for="frmInventory" class="form-label">Inventory</label>
 
           <div *ngIf="loadingInventories">
             <span class="spinner-grow text-secondary spinner-grow-sm btn-spinner" role="status"
@@ -78,7 +78,7 @@
 
       <div class="row">
         <div class="col-5 mb-3">
-          <label for="frmKeystore" class="form-label"><strong>Keystore</strong></label>
+          <label for="frmKeystore" class="form-label">Keystore</label>
 
           <div *ngIf="loadingKeystore">
             <span class="spinner-grow text-secondary spinner-grow-sm btn-spinner" role="status"
@@ -108,7 +108,7 @@
 
       <div class="row">
         <div class="col-5 mb-3">
-          <label for="frmRepository" class="form-label"><strong>Repository</strong></label>
+          <label for="frmRepository" class="form-label">Repository</label>
 
           <div *ngIf="loadingRepositories">
             <span class="spinner-grow text-secondary spinner-grow-sm btn-spinner" role="status"

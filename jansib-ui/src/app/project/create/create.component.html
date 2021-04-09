@@ -20,7 +20,7 @@
     <form autocomplete="off">
       <div class="row">
         <div class="col-7 mb-3">
-          <label for="frmName" class="form-label"><strong>Name</strong></label>
+          <label for="frmName" class="form-label">Name</label>
           <input type="text" class="form-control" name="frmName" id="frmName" placeholder="Project name"
             [(ngModel)]="model.name" [disabled]="loading" required>
           <small class="form-text text-muted">Required. Only alphanumeric and spaces are allowed.</small>
@@ -29,7 +29,7 @@
 
       <div class="row">
         <div class="col-7 mb-3">
-          <label for="frmDescription" class="form-label"><strong>Description</strong></label>
+          <label for="frmDescription" class="form-label">Description</label>
           <input type="text" class="form-control" name="frmDescription" id="frmDescription"
             placeholder="Project description" [(ngModel)]=" model.description" [disabled]="loading">
         </div>

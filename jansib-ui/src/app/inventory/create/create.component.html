@@ -20,7 +20,7 @@
     <form autocomplete="off">
       <div class="row">
         <div class="col-7 mb-3">
-          <label for="frmName" class="form-label"><strong>Name</strong></label>
+          <label for="frmName" class="form-label">Name</label>
           <input type="text" class="form-control" name="frmName" id="frmName" placeholder="Inventory name"
             [(ngModel)]="model.name" [disabled]="loading" required>
           <small class="form-text text-muted">Required. Only alphanumeric and spaces are allowed.</small>
@@ -29,7 +29,7 @@
 
       <div class="row">
         <div class="col-7 mb-3">
-          <label for="frmDescription" class="form-label"><strong>Description</strong></label>
+          <label for="frmDescription" class="form-label">Description</label>
           <input type="text" class="form-control" name="frmDescription" id="frmDescription"
             placeholder="Inventory description" [(ngModel)]=" model.description" [disabled]="loading">
         </div>
@@ -37,7 +37,7 @@
 
       <div class="row">
         <div class="col-2 mb-5">
-          <label for="frmSource" class="form-label"><strong>Source</strong></label>
+          <label for="frmSource" class="form-label">Source</label>
           <select name="source" class="form-select" aria-label="Select inventory source" [disabled]="loading"
             [(ngModel)]="model.source">
             <option *ngFor=" let source of sources" [ngValue]="source.id">
@@ -49,7 +49,7 @@
 
       <div *ngIf="model.source === 'file'" class="row">
         <div class="col-7 mb-3">
-          <label for="frmFilePath" class="form-label"><strong>Path to inventory file</strong></label>
+          <label for="frmFilePath" class="form-label">Path to inventory file</label>
           <input type="text" class="form-control" name="frmFilePath" id="frmFilePath" placeholder="Inventory file path"
             [(ngModel)]="model.fileConfig!.path" [disabled]="loading" required>
           <small class="form-text text-muted">Required. Relative path to project root where inventory is.</small>

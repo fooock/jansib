@@ -20,7 +20,7 @@
     <form autocomplete="off">
       <div class="row">
         <div class="col-7 mb-3">
-          <label for="frmName" class="form-label"><strong>Name</strong></label>
+          <label for="frmName" class="form-label">Name</label>
           <input type="text" class="form-control" name="frmName" id="frmName" placeholder="Repository name"
             [(ngModel)]="model.name" [disabled]="loading" required>
           <small class="form-text text-muted">Required. Only alphanumeric and spaces are allowed.</small>
@@ -29,7 +29,7 @@
 
       <div class="row">
         <div class="col-7 mb-3">
-          <label for="frmUrl" class="form-label"><strong>URL</strong></label>
+          <label for="frmUrl" class="form-label">URL</label>
           <input type="text" class="form-control" name="frmUrl" id="frmUrl" placeholder="Repository URL"
             [(ngModel)]="model.url" [disabled]="loading" required>
           <small class="form-text text-muted">Required. Repository URL.</small>
@@ -38,7 +38,7 @@
 
       <div class="row">
         <div class="col-5 mb-3">
-          <label for="frmBranch" class="form-label"><strong>Branch</strong></label>
+          <label for="frmBranch" class="form-label">Branch</label>
           <input type="text" class="form-control" name="frmBranch" id="frmBranch" placeholder="Repository branch"
             [(ngModel)]="model.branch" [disabled]="loading" required>
           <small class="form-text text-muted">Required. Repository branch to use. By default is
@@ -48,7 +48,7 @@
 
       <div class="row">
         <div class="col-2 mb-3">
-          <label for="frmBranch" class="form-label"><strong>Use auth?</strong></label>
+          <label for="frmBranch" class="form-label">Use auth?</label>
           <select name="useAuth" id="useAuth" class="form-select" aria-label="Is auth required" [disabled]="loading"
             [(ngModel)]="useAuth" (ngModelChange)="onChange($event)">
             <option *ngFor=" let v of authValues" [ngValue]="v.value">
@@ -60,7 +60,7 @@
 
       <div *ngIf="useAuth" class="row">
         <div class="col-5 mb-3">
-          <label for="frmType" class="form-label"><strong>Keystore</strong></label>
+          <label for="frmType" class="form-label">Keystore</label>
 
           <div *ngIf="loadingKeystore">
             <span class="spinner-grow text-secondary spinner-grow-sm btn-spinner" role="status"

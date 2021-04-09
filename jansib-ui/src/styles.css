@@ -20,8 +20,13 @@ button:disabled {
   pointer-events: all !important;
 }
 
-label strong {
+label {
   color: #0d6efd;
+}
+
+code {
+  font-family: monospace;
+  color: rgb(128, 128, 128);
 }
 
 .alert {
@@ -50,7 +55,7 @@ tbody tr {
 }
 
 tbody tr td {
-  font-size: .95em;
+  font-size: 1em;
 }
 
 tbody tr td a, a {
