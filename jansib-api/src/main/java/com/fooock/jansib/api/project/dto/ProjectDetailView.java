@@ -7,4 +7,8 @@ import lombok.RequiredArgsConstructor;
 @Data
 public class ProjectDetailView {
     private final String id;
+    private final String name;
+    private final String description;
+
+    private final long created;
 }

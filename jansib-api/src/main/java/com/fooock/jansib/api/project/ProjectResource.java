@@ -19,7 +19,8 @@ public class ProjectResource {
     @POST
     public ProjectView create(@Valid CreateProjectRequest request) {
         String id = RandomStringUtils.randomAlphanumeric(7);
-        return new ProjectView(id, request.getName(), request.getDescription());
+        long created = System.currentTimeMillis();
+        return new ProjectView(id, request.getName(), request.getDescription(), created);
     }
 
     @GET
@@ -30,6 +31,7 @@ public class ProjectResource {
     @GET
     @Path("{id}")
     public ProjectDetailView getById(@PathParam("id") String id) {
-        return new ProjectDetailView(id);
+        long created = System.currentTimeMillis();
+        return new ProjectDetailView(id, "Project name", "My project description", created);
     }
 }

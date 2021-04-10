@@ -9,4 +9,6 @@ public class ProjectView {
     private final String id;
     private final String name;
     private final String description;
+
+    private final long created;
 }
