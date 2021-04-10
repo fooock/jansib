@@ -25,7 +25,6 @@ label {
 }
 
 code {
-  font-family: monospace;
   color: rgb(128, 128, 128);
 }
 
@@ -47,7 +46,7 @@ thead {
 }
 
 tbody tr:hover {
-  background-color: #f7f7f8 !important; 
+  background-color: #f7f7f8 !important;
 }
 
 tbody tr {
