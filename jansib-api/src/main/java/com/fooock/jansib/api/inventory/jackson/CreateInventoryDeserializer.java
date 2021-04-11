@@ -3,7 +3,6 @@ package com.fooock.jansib.api.inventory.jackson;
 import com.fasterxml.jackson.core.*;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
-import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import com.fasterxml.jackson.databind.node.TextNode;
 import com.fooock.jansib.api.inventory.dto.CreateFileInventoryRequest;
 import com.fooock.jansib.api.inventory.dto.CreateInventoryRequest;
@@ -19,11 +18,10 @@ public class CreateInventoryDeserializer extends JsonDeserializer<CreateInventor
         ObjectCodec codec = p.getCodec();
         TreeNode node = codec.readTree(p);
 
-        if (!node.isObject())
-            throw new JsonParseException(p, "Expected JSON object");
-
+        if (!node.isObject()) throw new JsonParseException(p, "Expected JSON object");
         TextNode type = (TextNode) node.get("type");
-        // File inventory types
+
+        // Parse file inventory types
         if (type.textValue().equalsIgnoreCase("file")) {
             CreateInventoryRequest<CreateFileInventoryRequest> wrapper = new CreateInventoryRequest<>();
             fillCommonFields(node, wrapper);
@@ -35,7 +33,10 @@ public class CreateInventoryDeserializer extends JsonDeserializer<CreateInventor
 
             return wrapper;
         }
-        throw new InvalidFormatException(p, "No valid type found", null, null);
+        // we can return an empty object here because we have our class
+        // annotated with validation constraints, and the error will be throw
+        // by these rules.
+        return new CreateInventoryRequest<>();
     }
 
     private void fillCommonFields(TreeNode node, CreateInventoryRequest<?> wrapper) {

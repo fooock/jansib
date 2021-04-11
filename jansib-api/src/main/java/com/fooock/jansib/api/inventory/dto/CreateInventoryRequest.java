@@ -2,6 +2,7 @@ package com.fooock.jansib.api.inventory.dto;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fooock.jansib.api.inventory.jackson.CreateInventoryDeserializer;
+import com.fooock.jansib.api.inventory.validation.AllowedInventoryType;
 import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
@@ -18,7 +19,7 @@ public class CreateInventoryRequest<T> {
     @NotEmpty
     private String name;
 
-    @NotEmpty
+    @AllowedInventoryType
     private String type;
 
     private String description;
