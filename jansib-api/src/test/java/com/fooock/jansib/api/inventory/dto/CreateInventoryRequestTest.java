@@ -2,11 +2,9 @@ package com.fooock.jansib.api.inventory.dto;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 class CreateInventoryRequestTest {
     @Test
@@ -25,6 +23,11 @@ class CreateInventoryRequestTest {
     public void testDeserializationFileInventoryTypeNotRecognized() throws JsonProcessingException {
         String json = "{\"name\":\"Hello\",\"description\":\"My description\",\"type\":\"static\",\"path\":\"inventory.ini\"}";
         ObjectMapper mapper = new ObjectMapper();
-        assertThrows(InvalidFormatException.class, () -> mapper.readValue(json, CreateInventoryRequest.class));
+        CreateInventoryRequest<?> request = mapper.readValue(json, CreateInventoryRequest.class);
+        assertNotNull(request);
+        assertNull(request.getName());
+        assertNull(request.getDescription());
+        assertNull(request.getType());
+        assertNull(request.getData());
     }
 }
