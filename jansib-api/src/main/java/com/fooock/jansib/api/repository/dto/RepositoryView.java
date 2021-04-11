@@ -6,10 +6,9 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Data
 public class RepositoryView {
-    private final String id;
-    private final String name;
-    private final String url;
-    private final String branch;
-
-    private final long created;
+    private String id;
+    private String name;
+    private String url;
+    private String branch;
+    private long created;
 }

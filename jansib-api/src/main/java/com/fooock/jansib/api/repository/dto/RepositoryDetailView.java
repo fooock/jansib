@@ -6,5 +6,6 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Data
 public class RepositoryDetailView {
-    private final String id;
+    private String id;
+    private String name;
 }

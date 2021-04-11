@@ -9,6 +9,7 @@ import java.util.List;
 
 @ApplicationScoped
 public class DefaultProjectService implements ProjectService {
+
     @Override
     public Project create(CreateProjectRequest request) {
         Project project = new Project();
