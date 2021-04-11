@@ -3,6 +3,7 @@ package com.fooock.jansib.api.inventory.jackson;
 import com.fasterxml.jackson.core.*;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.TextNode;
 import com.fooock.jansib.api.inventory.dto.CreateFileInventoryRequest;
 import com.fooock.jansib.api.inventory.dto.CreateInventoryRequest;
@@ -26,9 +27,8 @@ public class CreateInventoryDeserializer extends JsonDeserializer<CreateInventor
             CreateInventoryRequest<CreateFileInventoryRequest> wrapper = new CreateInventoryRequest<>();
             fillCommonFields(node, wrapper);
 
-            CreateFileInventoryRequest fileInventory = new CreateFileInventoryRequest();
-            TextNode path = (TextNode) node.get("path");
-            fileInventory.setPath(path.asText());
+            JsonNode fileConfig = (JsonNode) node.get("data");
+            CreateFileInventoryRequest fileInventory = codec.treeToValue(fileConfig, CreateFileInventoryRequest.class);
             wrapper.setData(fileInventory);
 
             return wrapper;

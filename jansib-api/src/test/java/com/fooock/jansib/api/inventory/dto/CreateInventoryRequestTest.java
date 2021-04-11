@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class CreateInventoryRequestTest {
     @Test
     public void testDeserializationFileInventory() throws JsonProcessingException {
-        String json = "{\"name\":\"Hello\",\"description\":\"My description\",\"type\":\"file\",\"path\":\"inventory.ini\"}";
+        String json = "{\"name\":\"Hello\",\"description\":\"My description\",\"type\":\"file\",\"data\":{\"path\":\"inventory.ini\"}}";
         ObjectMapper mapper = new ObjectMapper();
         CreateInventoryRequest<CreateFileInventoryRequest> request = mapper.readValue(json, CreateInventoryRequest.class);
 
@@ -21,7 +21,7 @@ class CreateInventoryRequestTest {
 
     @Test
     public void testDeserializationFileInventoryTypeNotRecognized() throws JsonProcessingException {
-        String json = "{\"name\":\"Hello\",\"description\":\"My description\",\"type\":\"static\",\"path\":\"inventory.ini\"}";
+        String json = "{\"name\":\"Hello\",\"description\":\"My description\",\"type\":\"static\",\"data\":{\"path\":\"inventory.ini\"}}";
         ObjectMapper mapper = new ObjectMapper();
         CreateInventoryRequest<?> request = mapper.readValue(json, CreateInventoryRequest.class);
         assertNotNull(request);
