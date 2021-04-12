@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 @Path("keystore")
 public class KeystoreResource {
     @Inject
-    private KeystoreService service;
+    KeystoreService service;
 
     @POST
     public KeystoreView create(@Valid CreateKeystoreRequest<?> request) {

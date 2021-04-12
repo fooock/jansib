@@ -19,7 +19,7 @@ import java.util.List;
 @Path("inventory")
 public class InventoryResource {
     @Inject
-    private InventoryService service;
+    InventoryService service;
 
     @POST
     public InventoryView create(@Valid CreateInventoryRequest<?> request) {

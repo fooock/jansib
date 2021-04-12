@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 @Path("repository")
 public class RepositoryResource {
     @Inject
-    private RepositoryService service;
+    RepositoryService service;
 
     @POST
     public RepositoryView create(@Valid CreateRepositoryRequest request) {

@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 @Path("project")
 public class ProjectResource {
     @Inject
-    private ProjectService service;
+    ProjectService service;
 
     @POST
     public ProjectView create(@Valid CreateProjectRequest request) {
