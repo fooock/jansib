@@ -6,10 +6,10 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Data
 public class InventoryView {
-    private final String id;
-    private final String name;
-    private final String description;
-    private final String type;
+    private String id;
+    private String name;
+    private String description;
+    private String type;
 
-    private final long created;
+    private long created;
 }

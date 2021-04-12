@@ -3,9 +3,10 @@ package com.fooock.jansib.api.inventory;
 import com.fooock.jansib.api.inventory.dto.CreateInventoryRequest;
 import com.fooock.jansib.api.inventory.dto.InventoryDetailView;
 import com.fooock.jansib.api.inventory.dto.InventoryView;
+import com.fooock.jansib.api.inventory.service.InventoryService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.RandomStringUtils;
 
+import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -17,12 +18,16 @@ import java.util.List;
 @Slf4j
 @Path("inventory")
 public class InventoryResource {
+    @Inject
+    private InventoryService service;
 
     @POST
     public InventoryView create(@Valid CreateInventoryRequest<?> request) {
-        String id = RandomStringUtils.randomAlphanumeric(7);
-        long created = System.currentTimeMillis();
-        return new InventoryView(id, request.getName(), request.getDescription(), request.getType(), created);
+        return service.create(request).transform(data -> {
+            InventoryView view = new InventoryView();
+            view.setName(data.getName());
+            return view;
+        });
     }
 
     @GET
@@ -33,7 +38,10 @@ public class InventoryResource {
     @GET
     @Path("{inventoryId}")
     public InventoryDetailView getById(@PathParam("inventoryId") String inventoryId) {
-        long created = System.currentTimeMillis();
-        return new InventoryDetailView(inventoryId, "Inventory name", "Inventory description", "file", created);
+        return service.getById(inventoryId).transform(data -> {
+            InventoryDetailView detailView = new InventoryDetailView();
+            detailView.setName(data.getName());
+            return detailView;
+        });
     }
 }
