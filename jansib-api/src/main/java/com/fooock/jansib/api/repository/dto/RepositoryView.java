@@ -10,5 +10,7 @@ public class RepositoryView {
     private String name;
     private String url;
     private String branch;
+    private String keystoreId;
+
     private long created;
 }

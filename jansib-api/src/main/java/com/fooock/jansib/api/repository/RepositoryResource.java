@@ -3,6 +3,7 @@ package com.fooock.jansib.api.repository;
 import com.fooock.jansib.api.repository.dto.CreateRepositoryRequest;
 import com.fooock.jansib.api.repository.dto.RepositoryDetailView;
 import com.fooock.jansib.api.repository.dto.RepositoryView;
+import com.fooock.jansib.api.repository.model.Repository;
 import com.fooock.jansib.api.repository.service.RepositoryService;
 
 import javax.inject.Inject;
@@ -21,21 +22,27 @@ public class RepositoryResource {
 
     @POST
     public RepositoryView create(@Valid CreateRepositoryRequest request) {
-        return service.create(request).transform(data -> {
-            RepositoryView view = new RepositoryView();
-            view.setName(data.getName());
-            return view;
-        });
+        return service.create(request)
+            .transform(this::toRepositoryView);
+    }
+
+    private RepositoryView toRepositoryView(Repository repository) {
+        RepositoryView view = new RepositoryView();
+        view.setName(repository.getName());
+        view.setBranch(repository.getBranch());
+        view.setUrl(repository.getUrl());
+        view.setId(repository.getId());
+        view.setCreated(repository.getCreated().toEpochMilli());
+
+        if (repository.getKeystore() != null)
+            view.setKeystoreId(repository.getKeystore().getId());
+        return view;
     }
 
     @GET
     public List<RepositoryView> list() {
         return service.list().stream()
-            .map(repository -> {
-                RepositoryView view = new RepositoryView();
-                view.setName(repository.getName());
-                return view;
-            })
+            .map(this::toRepositoryView)
             .collect(Collectors.toList());
     }
 
