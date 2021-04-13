@@ -6,6 +6,7 @@ import com.fooock.jansib.api.keystore.repository.KeystoreRepository;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @ApplicationScoped
@@ -13,6 +14,7 @@ public class DefaultKeystoreService implements KeystoreService {
     @Inject
     KeystoreRepository keystoreRepository;
 
+    @Transactional
     @Override
     public Keystore create(CreateKeystoreRequest<?> request) {
         Keystore keystore = new Keystore();
