@@ -3,6 +3,7 @@ package com.fooock.jansib.api.keystore;
 import com.fooock.jansib.api.keystore.dto.CreateKeystoreRequest;
 import com.fooock.jansib.api.keystore.dto.KeystoreDetailView;
 import com.fooock.jansib.api.keystore.dto.KeystoreView;
+import com.fooock.jansib.api.keystore.model.Keystore;
 import com.fooock.jansib.api.keystore.service.KeystoreService;
 
 import javax.inject.Inject;
@@ -21,21 +22,23 @@ public class KeystoreResource {
 
     @POST
     public KeystoreView create(@Valid CreateKeystoreRequest<?> request) {
-        return service.create(request).transform(data -> {
-            KeystoreView view = new KeystoreView();
-            view.setName(data.getName());
-            return view;
-        });
+        return service.create(request)
+            .transform(this::toKeystoreView);
+    }
+
+    private KeystoreView toKeystoreView(Keystore keystore) {
+        KeystoreView view = new KeystoreView();
+        view.setName(keystore.getName());
+        view.setId(keystore.getId());
+        view.setDescription(keystore.getDescription());
+        view.setType(keystore.getType());
+        return view;
     }
 
     @GET
     public List<KeystoreView> list() {
         return service.list().stream()
-            .map(data -> {
-                KeystoreView view = new KeystoreView();
-                view.setName(data.getName());
-                return view;
-            })
+            .map(this::toKeystoreView)
             .collect(Collectors.toList());
     }
 
