@@ -3,6 +3,7 @@ package com.fooock.jansib.api.project;
 import com.fooock.jansib.api.project.dto.CreateProjectRequest;
 import com.fooock.jansib.api.project.dto.ProjectDetailView;
 import com.fooock.jansib.api.project.dto.ProjectView;
+import com.fooock.jansib.api.project.model.Project;
 import com.fooock.jansib.api.project.service.ProjectService;
 
 import javax.inject.Inject;
@@ -21,21 +22,15 @@ public class ProjectResource {
 
     @POST
     public ProjectView create(@Valid CreateProjectRequest request) {
-        return service.create(request).transform(data -> {
-            ProjectView view = new ProjectView();
-            view.setName(data.getName());
-            return view;
-        });
+        return service.create(request)
+            .transform(this::toProjectView);
     }
 
     @GET
     public List<ProjectView> list() {
-        return service.list().stream()
-            .map(project -> {
-                ProjectView view = new ProjectView();
-                view.setName(project.getName());
-                return view;
-            })
+        return service.list()
+            .stream()
+            .map(this::toProjectView)
             .collect(Collectors.toList());
     }
 
@@ -47,5 +42,14 @@ public class ProjectResource {
             detailView.setName(data.getName());
             return detailView;
         });
+    }
+
+    private ProjectView toProjectView(Project data) {
+        ProjectView view = new ProjectView();
+        view.setId(data.getId());
+        view.setName(data.getName());
+        view.setDescription(data.getDescription());
+        view.setCreated(data.getCreated().toEpochMilli());
+        return view;
     }
 }

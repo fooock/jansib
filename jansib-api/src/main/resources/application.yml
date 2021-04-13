@@ -1,0 +1,11 @@
+"%dev":
+  quarkus:
+    datasource:
+      db-kind: postgresql
+      username: test
+      password: test
+      jdbc:
+        url: jdbc:postgresql://localhost:5432/jansib_db
+    hibernate-orm:
+      database:
+        generation: drop-and-create
