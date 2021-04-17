@@ -1,19 +1,18 @@
 <div class="mt-4">
-  <div class="project bg-data border-data p-3 mt-2" *ngIf="fileSourcesExists()">
-    <h5>File sources</h5>
+  <div class="project bg-data border-data p-3 mt-2">
 
     <table class="table table-borderless mt-2">
       <thead>
         <tr class="table-light text-secondary">
           <th scope=" col">Name</th>
-          <th scope="col">Inventory path</th>
+          <th scope="col">Type</th>
           <th scope="col">Description</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of getFileSourceInventories()">
+        <tr *ngFor="let item of inventories">
           <td><a routerLink="{{ item.id }}">{{ item.name }}</a></td>
-          <td><code>{{ item.fileConfig!.path }}</code></td>
+          <td><code>{{ item.source }}</code></td>
           <td>{{ item.description }}</td>
         </tr>
       </tbody>

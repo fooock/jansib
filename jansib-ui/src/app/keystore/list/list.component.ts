@@ -13,12 +13,4 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  sshTypeExists(): boolean {
-    return this.getSshTypes().length > 0;
-  }
-
-  getSshTypes(): Keystore[] {
-    return this.keystores.filter(k => k.type === 'SSH');
-  }
 }
