@@ -5,7 +5,6 @@ import com.fooock.jansib.api.inventory.dto.InventoryDetailView;
 import com.fooock.jansib.api.inventory.dto.InventoryView;
 import com.fooock.jansib.api.inventory.model.Inventory;
 import com.fooock.jansib.api.inventory.service.InventoryService;
-import lombok.extern.slf4j.Slf4j;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
@@ -16,7 +15,6 @@ import javax.ws.rs.PathParam;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Slf4j
 @Path("inventory")
 public class InventoryResource {
     @Inject
@@ -32,14 +30,17 @@ public class InventoryResource {
         InventoryView view = new InventoryView();
         view.setName(inventory.getName());
         view.setDescription(inventory.getDescription());
-        view.setId(view.getId());
+        view.setId(inventory.getId());
         view.setCreated(inventory.getCreated().toEpochMilli());
+        view.setType(inventory.getType());
+        view.setData(inventory.typeParams());
         return view;
     }
 
     @GET
     public List<InventoryView> list() {
-        return service.list().stream()
+        return service.list()
+            .stream()
             .map(this::toInventoryView)
             .collect(Collectors.toList());
     }
