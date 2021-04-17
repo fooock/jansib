@@ -32,12 +32,15 @@ public class KeystoreResource {
         view.setId(keystore.getId());
         view.setDescription(keystore.getDescription());
         view.setType(keystore.getType());
+        view.setData(keystore.typeParams());
+        view.setCreated(keystore.getCreated().toEpochMilli());
         return view;
     }
 
     @GET
     public List<KeystoreView> list() {
-        return service.list().stream()
+        return service.list()
+            .stream()
             .map(this::toKeystoreView)
             .collect(Collectors.toList());
     }
