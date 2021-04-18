@@ -14,7 +14,9 @@ public class CreateRepositoryRequest {
 
     @NotEmpty
     private String branch;
-
-    @NotEmpty
     private String keystoreId;
+
+    public boolean isValidKeystore() {
+        return keystoreId != null && !keystoreId.isBlank();
+    }
 }

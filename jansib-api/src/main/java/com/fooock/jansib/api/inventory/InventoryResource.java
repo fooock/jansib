@@ -51,6 +51,11 @@ public class InventoryResource {
         return service.getById(inventoryId).transform(data -> {
             InventoryDetailView detailView = new InventoryDetailView();
             detailView.setName(data.getName());
+            detailView.setDescription(data.getDescription());
+            detailView.setId(data.getId());
+            detailView.setCreated(data.getCreated().toEpochMilli());
+            detailView.setType(data.getType());
+            detailView.setData(data.typeParams());
             return detailView;
         });
     }

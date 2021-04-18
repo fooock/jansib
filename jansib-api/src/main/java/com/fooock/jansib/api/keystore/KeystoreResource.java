@@ -51,6 +51,11 @@ public class KeystoreResource {
         return service.getById(keystoreId).transform(data -> {
             KeystoreDetailView view = new KeystoreDetailView();
             view.setName(data.getName());
+            view.setId(data.getId());
+            view.setDescription(data.getDescription());
+            view.setType(data.getType());
+            view.setData(data.typeParams());
+            view.setCreated(data.getCreated().toEpochMilli());
             return view;
         });
     }

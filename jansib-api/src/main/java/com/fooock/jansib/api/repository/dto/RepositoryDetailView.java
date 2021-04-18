@@ -8,4 +8,9 @@ import lombok.RequiredArgsConstructor;
 public class RepositoryDetailView {
     private String id;
     private String name;
+    private String url;
+    private String branch;
+    private String keystoreId;
+
+    private long created;
 }

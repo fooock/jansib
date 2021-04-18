@@ -51,8 +51,13 @@ public class RepositoryResource {
     public RepositoryDetailView getById(@PathParam("repositoryId") String repositoryId) {
         return service.getById(repositoryId).transform(data -> {
             RepositoryDetailView detailView = new RepositoryDetailView();
-            detailView.setId(data.getId());
             detailView.setName(data.getName());
+            detailView.setBranch(data.getBranch());
+            detailView.setUrl(data.getUrl());
+            detailView.setId(data.getId());
+            detailView.setCreated(data.getCreated().toEpochMilli());
+            if (data.getKeystore() != null)
+                detailView.setKeystoreId(data.getKeystore().getId());
             return detailView;
         });
     }

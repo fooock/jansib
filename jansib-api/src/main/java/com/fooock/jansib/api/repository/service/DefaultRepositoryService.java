@@ -27,7 +27,7 @@ public class DefaultRepositoryService implements RepositoryService {
     public Repository create(CreateRepositoryRequest request) {
         Repository repository = toRepositoryModel(request);
         // Check keystore ID if specified in the request
-        if (request.getKeystoreId() != null) {
+        if (request.isValidKeystore()) {
             Optional<Keystore> optionalKeystore = keystoreRepository.findById(request.getKeystoreId());
 
             // If keystore is set but not found, then we throw a 404 error
