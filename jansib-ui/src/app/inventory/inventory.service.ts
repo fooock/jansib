@@ -1,35 +1,29 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { of, Observable } from 'rxjs';
-import { delay } from 'rxjs/operators';
-import { FileConfig, Inventory } from './inventory';
+import { Observable } from 'rxjs';
+import { Inventory } from './inventory';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InventoryService {
-  private inventories: Inventory[] = [];
+  private apiUrl: string = environment.apiUrl + "/inventory";
 
   constructor(
     private client: HttpClient
-  ) {
-    const i = new Inventory('13213', 'my custom inventory file', 'This is a short description', 'file', 
-      new FileConfig('/path/to/my/inventory.ini'));
-    this.inventories.push(i);
-  }
+  ) { }
 
   addInventory(inventory: Inventory): Observable<Inventory[]> {
-    inventory.id = Math.random().toString(36).substr(2, 5);
-    this.inventories.push(inventory);
-    return of(this.inventories).pipe(delay(500));
+    return this.client.post<Inventory[]>(this.apiUrl, inventory);
   }
 
   getInventories(): Observable<Inventory[]> {
-    return of(this.inventories).pipe(delay(500));
+    return this.client.get<Inventory[]>(this.apiUrl);
   }
 
   getInventoryById(inventoryId: string): Observable<Inventory> {
-    const i = this.inventories.filter(r => r.id === inventoryId)[0];
-    return of(i).pipe(delay(300));
+    const u = this.apiUrl + "/" + inventoryId;
+    return this.client.get<Inventory>(u);
   }
 }

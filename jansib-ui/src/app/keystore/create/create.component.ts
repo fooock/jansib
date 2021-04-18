@@ -9,7 +9,9 @@ import { KeystoreService } from '../keystore.service';
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
-  types: string[] = ['SSH'];
+  types = [
+    { id: 'ssh', value: 'SSH' }
+  ];
   model: Keystore = new Keystore('', '', '', '');
   loading: boolean = false;
 
@@ -22,16 +24,16 @@ export class CreateComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.onChange(this.types[0]);
+    this.onChange(this.types[0].id);
   }
 
   onChange(type: string): void {
     this.model.type = type;
-    if (this.model.type == 'SSH') {
-      this.model.ssh = new SshConfig('', '', '', '');
+    if (this.model.type == 'ssh') {
+      this.model.data = new SshConfig('', '', '', '');
       // default set ssh username to root
-      if (this.model.ssh!.username.length === 0)
-        this.model.ssh!.username = 'root';
+      if (this.model.data!.username.length === 0)
+        this.model.data!.username = 'root';
     }
   }
 

@@ -15,5 +15,7 @@ export class ListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.projects = this.projects
+      .map(x => Object.assign(new Project('', '', '', 0), x));
   }
 }

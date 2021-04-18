@@ -13,4 +13,9 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  showType(keystoreId: string): string {
+    if (!keystoreId) return "Public";
+    return keystoreId.length > 0 ? "Private" : "Public";
+  }
 }

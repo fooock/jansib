@@ -4,7 +4,7 @@ export class Keystore {
     public name: string,
     public description: string,
     public type: string,
-    public ssh?: SshConfig
+    public data?: SshConfig
   ) { }
 }
 

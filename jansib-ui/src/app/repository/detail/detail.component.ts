@@ -19,7 +19,7 @@ export class DetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading = true;
-    
+
     this.activatedRoute.params.subscribe(params => {
       this.service.getRepositoryById(params.repoId).subscribe(result => {
         this.loading = false;
@@ -29,5 +29,10 @@ export class DetailComponent implements OnInit {
         this.loading = false;
       });
     });
+  }
+
+  showType(): string {
+    if (!this.model.keystoreId) return "Public";
+    return this.model.keystoreId.length > 0 ? "Private" : "Public";
   }
 }

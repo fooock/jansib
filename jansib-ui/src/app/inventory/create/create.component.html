@@ -39,7 +39,7 @@
         <div class="col-2 mb-5">
           <label for="frmSource" class="form-label">Source</label>
           <select name="source" class="form-select" aria-label="Select inventory source" [disabled]="loading"
-            [(ngModel)]="model.source">
+            [(ngModel)]="model.type">
             <option *ngFor=" let source of sources" [ngValue]="source.id">
               {{ source.name }}
             </option>
@@ -47,16 +47,16 @@
         </div>
       </div>
 
-      <div *ngIf="model.source === 'file'" class="row">
+      <div *ngIf="model.type === 'file'" class="row">
         <div class="col-7 mb-3">
           <label for="frmFilePath" class="form-label">Path to inventory file</label>
           <input type="text" class="form-control" name="frmFilePath" id="frmFilePath" placeholder="Inventory file path"
-            [(ngModel)]="model.fileConfig!.path" [disabled]="loading" required>
+            [(ngModel)]="model.data!.path" [disabled]="loading" required>
           <small class="form-text text-muted">Required. Relative path to project root where inventory is.</small>
         </div>
       </div>
 
-      <button type="submit" class="btn btn-primary mt-3" [disabled]="!model.name || !model.fileConfig!.path || loading"
+      <button type="submit" class="btn btn-primary mt-3" [disabled]="!model.name || !model.data!.path || loading"
         (click)="createInventory()">
         <span *ngIf="loading" class="spinner-grow spinner-grow-sm btn-spinner" role="status" aria-hidden="true"></span>
         Create

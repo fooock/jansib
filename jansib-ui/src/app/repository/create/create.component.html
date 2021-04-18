@@ -70,7 +70,7 @@
 
           <div *ngIf="keystores.length > 0 && !loadingKeystore">
             <select name="name" class="form-select" aria-label="Select keystore" [disabled]="loading"
-              [(ngModel)]="model.keyId" (ngModelChange)="onChange($event)">
+              [(ngModel)]="model.keystoreId" (ngModelChange)="onChange($event)">
               <option *ngFor=" let ks of keystores" [ngValue]="ks.id">
                 {{ ks.name }}
               </option>
@@ -89,7 +89,7 @@
       </div>
 
       <button type="submit" class="btn btn-primary mt-3"
-        [disabled]="!model.name || !model.url || !model.branch || (useAuth && !model.keyId) || loading"
+        [disabled]="!model.name || !model.url || !model.branch || (useAuth && !model.keystoreId) || loading"
         (click)="createRepository()">
         <span *ngIf="loading" class="spinner-grow spinner-grow-sm btn-spinner" role="status" aria-hidden="true"></span>
         Create

@@ -22,8 +22,8 @@ export class CreateComponent implements OnInit {
 
   ngOnInit(): void {
     // assign a default value...
-    this.model.source = this.sources[0].id;
-    this.model.fileConfig = new FileConfig('');
+    this.model.type = this.sources[0].id;
+    this.model.data = new FileConfig('');
   }
 
   createInventory(): void {

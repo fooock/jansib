@@ -40,19 +40,19 @@
           <label for="frmType" class="form-label">Type</label>
           <select name="type" class="form-select" aria-label="Select keystore type" [(ngModel)]="model.type"
             (ngModelChange)="onChange($event)" [disabled]="loading">
-            <option *ngFor=" let type of types" [ngValue]="type">
-              {{ type }}
+            <option *ngFor=" let type of types" [ngValue]="type.id">
+              {{ type.value }}
             </option>
           </select>
         </div>
       </div>
 
-      <div *ngIf="model.type == 'SSH'">
+      <div *ngIf="model.type == 'ssh'">
         <div class="row">
           <div class="col-5 mb-3">
             <label for="frmSshUsername" class="form-label">Username</label>
             <input type="text" class="form-control" name="frmSshUsername" id="frmSshUsername" placeholder="root"
-              [(ngModel)]="model.ssh!.username" [disabled]="loading">
+              [(ngModel)]="model.data!.username" [disabled]="loading">
             <small class="form-text text-muted">The username to be used for SSH authentication. If not
               specified we will use <strong>root</strong> by default.</small>
           </div>
@@ -64,7 +64,7 @@
 
             <div class="input-group">
               <input type="password" class="form-control" name="frmSshPassword" id="frmSshPassword"
-                placeholder="password" [(ngModel)]="model.ssh!.password"
+                placeholder="password" [(ngModel)]="model.data!.password"
                 type="{{ sshPasswordVisible ? 'text' : 'password'}}" [disabled]="loading">
 
               <button class="btn btn-outline-primary" (click)="sshPasswordVisible = !sshPasswordVisible" type="button">
@@ -81,7 +81,7 @@
             <label for="frmSshPrivateKey" class="form-label">Private Key</label>
             <textarea type="password" class=" form-control" rows="6" name="frmSshPrivateKey" id="frmSshPrivateKey"
               placeholder="Paste here the content of your private key" [disabled]="loading"
-              [(ngModel)]="model.ssh!.privateKey"></textarea>
+              [(ngModel)]="model.data!.privateKey"></textarea>
           </div>
         </div>
 
@@ -91,7 +91,7 @@
 
             <div class="input-group">
               <input type="password" class="form-control" name="frmSshPassphrase" id="frmSshPassphrase"
-                placeholder="passphrase" [(ngModel)]="model.ssh!.passphrase"
+                placeholder="passphrase" [(ngModel)]="model.data!.passphrase"
                 type="{{ sshPassphraseVisible ? 'text' : 'password'}}" [disabled]="loading">
 
               <button class="btn btn-outline-primary" (click)="sshPassphraseVisible = !sshPassphraseVisible"

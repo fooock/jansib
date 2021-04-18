@@ -24,12 +24,12 @@
           </td>
           <td>
             <div>
-              {{ item.isPrivate() ? "Private" : "Public"}}
+              {{ showType(item.keystoreId) }}
             </div>
           </td>
           <td>
             <div>
-              <a routerLink="/keystores/{{ item.keyId }}">{{ item.keyId }}</a>
+              <a routerLink="/keystores/{{ item.keystoreId }}">{{ item.keystoreId }}</a>
             </div>
           </td>
         </tr>

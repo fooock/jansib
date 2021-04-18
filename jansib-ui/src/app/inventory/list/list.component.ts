@@ -16,12 +16,4 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  getFileSourceInventories(): Inventory[] {
-    return this.inventories.filter(i => i.source === 'file');
-  }
-
-  fileSourcesExists(): boolean {
-    return this.getFileSourceInventories().length > 0;
-  }
 }

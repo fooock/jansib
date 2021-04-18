@@ -13,4 +13,9 @@ export class Project {
     const d = new Date(this.created * 1000);
     return d.toLocaleDateString();
   }
+
+  numberOfJobs(): number {
+    if (!this.jobs) return 0;
+    return this.jobs.length;
+  }
 }

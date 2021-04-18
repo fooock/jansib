@@ -18,15 +18,15 @@
 
   <div class="bg-data border-data p-4 mt-4">
     <h4 class="mb-1">{{ model.name }}</h4>
-    <p *ngIf="model.description.length > 0" class="text-secondary">{{ model.description }}</p>
+    <p *ngIf="model.description && model.description.length > 0" class="text-secondary">{{ model.description }}</p>
 
-    <div *ngIf="model.ssh" class="mt-3">
+    <div *ngIf="model.data" class="mt-3">
       <h5>SSH configuration</h5>
       <div class="mt-2">
         <p class="m-0 text-primary">Username</p>
-        <p class="text-secondary mb-0">{{ model.ssh!.username }}</p>
+        <p class="text-secondary mb-0">{{ model.data!.username }}</p>
       </div>
     </div>
-    
+
   </div>
 </div>

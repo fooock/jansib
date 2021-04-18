@@ -22,8 +22,9 @@ export class DetailComponent implements OnInit {
     this.loading = true;
 
     this.activatedRoute.params.subscribe(params => {
-      this.service.getProjectById(params.id).subscribe(project => {
-        this.model = project;
+      this.service.getProjectById(params.id).subscribe(data => {
+        // https://stackoverflow.com/questions/51763745/angular-6-error-typeerror-is-not-a-function-but-it-is
+        this.model = Object.assign(new Project('', '', '', 0), data);
         this.loading = false;
 
       }, err => {

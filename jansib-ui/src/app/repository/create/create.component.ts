@@ -35,10 +35,7 @@ export class CreateComponent implements OnInit {
     this.ksService.getKeystores().subscribe(args => {
       this.loadingKeystore = false;
       this.keystores = args;
-      // select the first one if available
-      if (this.keystores.length > 0) {
-        this.model.keyId = this.keystores[0].id
-      }
+      this.assignDefaultKeystore();
 
     }, err => {
       console.log(err);
@@ -47,7 +44,14 @@ export class CreateComponent implements OnInit {
   }
 
   onChange(ks: string): void {
-    this.model.keyId = ks;
+    if (!ks) {
+      this.model.keystoreId = '';
+      return;
+    }
+    // assign default keystore if no previously selected
+    if (!this.model.keystoreId || this.model.keystoreId.length === 0) {
+      this.assignDefaultKeystore();
+    }
   }
 
   createRepository(): void {
@@ -61,5 +65,12 @@ export class CreateComponent implements OnInit {
       this.loading = false;
       console.error(err);
     })
+  }
+
+  private assignDefaultKeystore(): void {
+    // select the first one if available
+    if (this.keystores.length > 0) {
+      this.model.keystoreId = this.keystores[0].id
+    }
   }
 }

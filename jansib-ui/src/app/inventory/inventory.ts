@@ -3,8 +3,8 @@ export class Inventory {
     public id: string,
     public name: string,
     public description: string,
-    public source: string,
-    public fileConfig?: FileConfig
+    public type: string,
+    public data?: FileConfig
   ) { }
 }
 
