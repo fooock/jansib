@@ -6,16 +6,12 @@ export class Project {
     public name: string,
     public description: string,
     public created: number,
-    public jobs: Job[] = []
+    public jobs: Job[] = [],
+    public numJobs: number = 0
   ) { }
 
   formattedDate(): string {
     const d = new Date(this.created * 1000);
     return d.toLocaleDateString();
-  }
-
-  numberOfJobs(): number {
-    if (!this.jobs) return 0;
-    return this.jobs.length;
   }
 }

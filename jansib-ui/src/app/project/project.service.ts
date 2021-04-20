@@ -8,7 +8,6 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class ProjectService {
-  public projects: Project[] = [];
   private apiUrl: string = environment.apiUrl + "/project";
 
   constructor(

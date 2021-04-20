@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { ProjectService } from '../project/project.service';
 import { Job } from './job';
 
@@ -9,21 +10,17 @@ import { Job } from './job';
   providedIn: 'root'
 })
 export class JobService {
+  private apiUrl: string = environment.apiUrl;
+
   constructor(
-    private client: HttpClient,
-    private projectService: ProjectService
+    private client: HttpClient
   ) { }
 
   addJob(projectId: string, job: Job): Observable<Job> {
-    job.id = Math.random().toString(36).substr(2, 5);
-    this.projectService.getProjectById(projectId).subscribe(result => {
-      result.jobs.push(job);
-    });
-    return of(job).pipe(delay(500));
+    return this.client.post<Job>(`${this.apiUrl}/project/${projectId}/job`, job);
   }
 
   getJobDetail(projectId: string, jobId: string): Observable<Job> {
-    const job = new Job(jobId, 'Update system dependencies', '', '', '', '', 0, 'created');
-    return of(job).pipe(delay(500));
+    return this.client.get<Job>(`${this.apiUrl}/project/${projectId}/job/${jobId}`);
   }
 }
