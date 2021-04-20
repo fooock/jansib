@@ -5,7 +5,6 @@ import com.fooock.jansib.api.project.model.Job;
 import com.fooock.jansib.api.project.model.Project;
 import com.fooock.jansib.api.project.service.JobService;
 import com.fooock.jansib.api.project.service.ProjectService;
-import lombok.RequiredArgsConstructor;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
@@ -17,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@RequiredArgsConstructor
 @Path("project")
 public class ProjectResource {
     @Inject
