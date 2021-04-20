@@ -5,32 +5,31 @@ import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.time.Instant;
-import java.util.List;
 import java.util.function.Function;
 
-@Entity
 @Data
-public class Project implements Transformable<Project> {
+@Entity
+public class Job implements Transformable<Job> {
     @Id
     @GenericGenerator(name = "id_generator", strategy = "com.fooock.jansib.api.RandomIdGenerator")
     @GeneratedValue(generator = "id_generator")
     private String id;
     private String name;
-    private String description;
+    private String type;
+
+    private JobState state;
 
     @CreationTimestamp
     private Instant created;
 
-    @OneToMany(mappedBy = "project")
-    private List<Job> jobs;
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private Project project;
 
     @Override
-    public <T> T transform(Function<Project, T> function) {
+    public <T> T transform(Function<Job, T> function) {
         return function.apply(this);
     }
 }

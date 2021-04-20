@@ -1,15 +1,13 @@
 package com.fooock.jansib.api.project.dto;
 
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
 @Data
-public class ProjectView {
+public class JobViewDetail {
     private String id;
     private String name;
-    private String description;
+    private String type;
+    private String state;
 
     private long created;
-    private int numJobs;
 }

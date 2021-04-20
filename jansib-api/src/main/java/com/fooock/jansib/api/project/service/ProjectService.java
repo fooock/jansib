@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface ProjectService {
     Project create(CreateProjectRequest request);
+
     List<Project> list();
+
     Project getById(String projectId);
 }
