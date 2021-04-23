@@ -37,7 +37,7 @@
 
       <div class="row">
         <div class="col-2 mb-3">
-          <label for="frmBranch" class="form-label"><strong>Type</strong></label>
+          <label for="frmBranch" class="form-label">Type</label>
           <select name="useAuth" id="useAuth" class="form-select" aria-label="Is auth required" [disabled]="loading"
             [(ngModel)]="model.type">
             <option *ngFor=" let t of types" [ngValue]="t.id">
@@ -68,7 +68,7 @@
 
           <div *ngIf="inventories.length == 0 && !loadingInventories">
             <p class="text-secondary mt-0">No inventories found.</p>
-            <button type="button" class="btn btn-outline-primary btn-sm" routerLink="/inventories/create">
+            <button type="button" class="btn btn-outline-primary" routerLink="/inventories/create">
               Create Inventory
             </button>
           </div>
@@ -98,7 +98,7 @@
 
           <div *ngIf="keystores.length == 0 && !loadingKeystore">
             <p class="text-secondary mt-0">No keystores found.</p>
-            <button type="button" class="btn btn-outline-primary btn-sm" routerLink="/keystores/create">
+            <button type="button" class="btn btn-outline-primary" routerLink="/keystores/create">
               Create keystore
             </button>
           </div>
@@ -127,7 +127,7 @@
 
           <div *ngIf="repositories.length == 0 && !loadingRepositories">
             <p class="text-secondary mt-0">No repositories found.</p>
-            <button type="button" class="btn btn-outline-primary btn-sm" routerLink="/repositories/create">
+            <button type="button" class="btn btn-outline-primary" routerLink="/repositories/create">
               Create repository
             </button>
           </div>
