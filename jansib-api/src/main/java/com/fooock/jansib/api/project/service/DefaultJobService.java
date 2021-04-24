@@ -74,6 +74,9 @@ public class DefaultJobService implements JobService {
 
     @Override
     public Job getById(String projectId, String jobId) {
-        return jobRepository.find("id", jobId).firstResult();
+        Optional<Job> job = jobRepository.findById(projectId, jobId);
+        if (job.isEmpty())
+            throw new WebApplicationException(Response.status(Response.Status.NOT_FOUND).build());
+        return job.get();
     }
 }

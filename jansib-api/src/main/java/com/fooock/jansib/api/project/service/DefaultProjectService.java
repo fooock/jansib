@@ -7,7 +7,10 @@ import com.fooock.jansib.api.project.repository.ProjectRepository;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
+import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Response;
 import java.util.List;
+import java.util.Optional;
 
 @ApplicationScoped
 public class DefaultProjectService implements ProjectService {
@@ -31,7 +34,9 @@ public class DefaultProjectService implements ProjectService {
 
     @Override
     public Project getById(String projectId) {
-        return projectRepository.find("id", projectId)
-            .firstResult();
+        Optional<Project> project = projectRepository.findById(projectId);
+        if (project.isEmpty())
+            throw new WebApplicationException(Response.status(Response.Status.NOT_FOUND).build());
+        return project.get();
     }
 }

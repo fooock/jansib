@@ -56,6 +56,9 @@ public class DefaultRepositoryService implements RepositoryService {
 
     @Override
     public Repository getById(String repositoryId) {
-        return codeRepository.find("id", repositoryId).firstResult();
+        Optional<Repository> repository = codeRepository.findById(repositoryId);
+        if (repository.isEmpty())
+            throw new WebApplicationException(Response.status(Response.Status.NOT_FOUND).build());
+        return repository.get();
     }
 }

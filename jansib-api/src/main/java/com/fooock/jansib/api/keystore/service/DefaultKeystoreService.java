@@ -10,7 +10,9 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Response;
 import java.util.List;
+import java.util.Optional;
 
 @ApplicationScoped
 public class DefaultKeystoreService implements KeystoreService {
@@ -47,6 +49,9 @@ public class DefaultKeystoreService implements KeystoreService {
 
     @Override
     public Keystore getById(String keystoreId) {
-        return keystoreRepository.find("id", keystoreId).firstResult();
+        Optional<Keystore> keystore = keystoreRepository.findById(keystoreId);
+        if (keystore.isEmpty())
+            throw new WebApplicationException(Response.status(Response.Status.NOT_FOUND).build());
+        return keystore.get();
     }
 }
