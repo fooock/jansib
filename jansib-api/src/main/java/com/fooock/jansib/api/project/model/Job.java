@@ -1,6 +1,9 @@
 package com.fooock.jansib.api.project.model;
 
 import com.fooock.jansib.api.Transformable;
+import com.fooock.jansib.api.inventory.model.Inventory;
+import com.fooock.jansib.api.keystore.model.Keystore;
+import com.fooock.jansib.api.repository.model.Repository;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
@@ -27,6 +30,18 @@ public class Job implements Transformable<Job> {
     @ManyToOne
     @JoinColumn(nullable = false)
     private Project project;
+
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private Inventory inventory;
+
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private Keystore keystore;
+
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private Repository repository;
 
     @Override
     public <T> T transform(Function<Job, T> function) {

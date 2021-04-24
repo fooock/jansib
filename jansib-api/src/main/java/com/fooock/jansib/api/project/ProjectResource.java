@@ -1,10 +1,13 @@
 package com.fooock.jansib.api.project;
 
+import com.fooock.jansib.api.inventory.dto.InventoryView;
+import com.fooock.jansib.api.keystore.dto.KeystoreView;
 import com.fooock.jansib.api.project.dto.*;
 import com.fooock.jansib.api.project.model.Job;
 import com.fooock.jansib.api.project.model.Project;
 import com.fooock.jansib.api.project.service.JobService;
 import com.fooock.jansib.api.project.service.ProjectService;
+import com.fooock.jansib.api.repository.dto.RepositoryView;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
@@ -85,6 +88,22 @@ public class ProjectResource {
         view.setCreated(job.getCreated().toEpochMilli());
         view.setType(job.getType());
         view.setState(job.getState().getName());
+        view.setProjectId(job.getProject().getId());
+        // inventory
+        InventoryView inventoryView = new InventoryView();
+        inventoryView.setId(job.getInventory().getId());
+        inventoryView.setName(job.getInventory().getName());
+        view.setInventory(inventoryView);
+        // repository
+        RepositoryView repositoryView = new RepositoryView();
+        repositoryView.setId(job.getRepository().getId());
+        repositoryView.setName(job.getRepository().getName());
+        view.setRepository(repositoryView);
+        // keystore
+        KeystoreView keystoreView = new KeystoreView();
+        keystoreView.setId(job.getKeystore().getId());
+        keystoreView.setName(job.getKeystore().getName());
+        view.setKeystore(keystoreView);
         return view;
     }
 

@@ -27,12 +27,14 @@
 
     <ul class="nav nav-tabs mt-4" id="myTab" role="tablist">
       <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="jobs-tab" data-bs-toggle="tab" data-bs-target="#jobs" type="button" role="tab" aria-controls="jobs" aria-selected="true">
+        <button class="nav-link active" id="jobs-tab" data-bs-toggle="tab" data-bs-target="#jobs" type="button"
+          role="tab" aria-controls="jobs" aria-selected="true">
           <h6>Jobs</h6>
         </button>
       </li>
       <li class="nav-item" role="presentation" *ngIf="model.jobs!.length > 0">
-        <button class="nav-link" id="activity-tab" data-bs-toggle="tab" data-bs-target="#activity" type="button" role="tab" aria-controls="profile" aria-selected="false">
+        <button class="nav-link" id="activity-tab" data-bs-toggle="tab" data-bs-target="#activity" type="button"
+          role="tab" aria-controls="profile" aria-selected="false">
           <h6>Activity</h6>
         </button>
       </li>
@@ -72,18 +74,18 @@
                 </td>
                 <td>{{ j.type }}</td>
                 <td>
-                  <a routerLink="/keystores/{{ j.keystoreId }}">
-                    {{ j.keystoreId }}
+                  <a routerLink="/keystores/{{ j.keystore?.id }}">
+                    {{ j.keystore?.name }}
                   </a>
                 </td>
                 <td>
-                  <a routerLink="/inventories/{{ j.inventoryId }}">
-                    {{ j.inventoryId }}
+                  <a routerLink="/inventories/{{ j.inventory?.id }}">
+                    {{ j.inventory?.name }}
                   </a>
                 </td>
                 <td>
-                  <a routerLink="/repositories/{{ j.repositoryId }}">
-                    {{ j.repositoryId }}
+                  <a routerLink="/repositories/{{ j.repository?.id }}">
+                    {{ j.repository?.name }}
                   </a>
                 </td>
               </tr>

@@ -10,7 +10,9 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Response;
 import java.util.List;
+import java.util.Optional;
 
 @ApplicationScoped
 public class DefaultInventoryService implements InventoryService {
@@ -44,6 +46,9 @@ public class DefaultInventoryService implements InventoryService {
 
     @Override
     public Inventory getById(String inventoryId) {
-        return inventoryRepository.find("id", inventoryId).firstResult();
+        Optional<Inventory> inventory = inventoryRepository.findById(inventoryId);
+        if (inventory.isEmpty())
+            throw new WebApplicationException(Response.status(Response.Status.NOT_FOUND).build());
+        return inventory.get();
     }
 }

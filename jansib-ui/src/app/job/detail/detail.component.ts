@@ -9,7 +9,7 @@ import { JobService } from '../job.service';
   styleUrls: ['./detail.component.css']
 })
 export class DetailComponent implements OnInit {
-  model: Job = new Job('', '', '', '', '', '', 0, '');
+  model: Job = new Job();
   projectId: string = '';
   loading: boolean = false;
 
@@ -26,7 +26,7 @@ export class DetailComponent implements OnInit {
       this.service.getJobDetail(args.id, args.jobId).subscribe(result => {
         this.model = result;
         this.loading = false;
-        
+
       }, e => {
         this.loading = false;
       })

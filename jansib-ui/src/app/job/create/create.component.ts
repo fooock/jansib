@@ -8,7 +8,7 @@ import { Project } from 'src/app/project/project';
 import { ProjectService } from 'src/app/project/project.service';
 import { Repository } from 'src/app/repository/repository';
 import { RepositoryService } from 'src/app/repository/repository.service';
-import { Job } from '../job';
+import { CreateJob, Job } from '../job';
 import { JobService } from '../job.service';
 
 @Component({
@@ -22,7 +22,7 @@ export class CreateComponent implements OnInit {
   inventories: Inventory[] = [];
   repositories: Repository[] = [];
 
-  model: Job = new Job('', '', 'run', '', '', '', 0, 'created');
+  model: CreateJob = new CreateJob();
 
   loading: boolean = false;
   loadingKeystore: boolean = false;
@@ -50,6 +50,8 @@ export class CreateComponent implements OnInit {
     this.loadingInventories = true;
     this.loadingRepositories = true;
     this.loadingProject = true;
+    // default job type
+    this.model.type = this.types[0].id;
 
     this.activatedRoute.params.subscribe(params => {
       this.projectService.getProjectById(params.id).subscribe(result => {
