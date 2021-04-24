@@ -2,6 +2,8 @@
   height: 24px;
   width: 24px;
   background-color: rgb(228, 228, 228);
+  border-radius: 50%;
+  display: inline-block;
 }
 
 .nav-tabs > .active > a, .nav-tabs > .active > a:hover, .nav-tabs > .active > a:focus {

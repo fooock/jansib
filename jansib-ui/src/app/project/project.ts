@@ -11,7 +11,7 @@ export class Project {
   ) { }
 
   formattedDate(): string {
-    const d = new Date(this.created * 1000);
+    const d = new Date(this.created);
     return d.toLocaleDateString();
   }
 }
